@@ -416,7 +416,7 @@
                     <span>个人设置</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu" <?php if((CONTROLLER_NAME== 'Personal') OR (CONTROLLER_NAME== 'Login') ): ?>style="display:block;" <?php else: ?>style="display:none;"<?php endif; ?> >
+                <ul class="submenu">
                     <li><a href="<?php echo U('Home/Personal/information');?>">个人信息中心</a></li>
                     <li><a href="<?php echo U('Home/Personal/pswReset');?>">修改密码</a></li>
                     <li><a href="<?php echo U('Home/Login/logout');?>">退出登录</a></li>
@@ -451,41 +451,8 @@
             <!-- 整站数据显示 upper -->
             <!-- end upper main stats -->
             
-	<div id="main-stats">
-	    <div class="row-fluid stats-row">
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number"><?php echo ($name); ?></span>
-	                visits
-	            </div>
-	            <span class="date">Today</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">3240</span>
-	                users
-	            </div>
-	            <span class="date">February 2014</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">322</span>
-	                orders
-	            </div>
-	            <span class="date">This week</span>
-	        </div>
-	        <div class="span3 stat last">
-	            <div class="data">
-	                <span class="number">$2,340</span>
-	                sales
-	            </div>
-	            <span class="date">last 30 days</span>
-	        </div>
-	    </div>
-	</div>
+hello world
 
-	
-	Home/Index/index
 
             
         </div>

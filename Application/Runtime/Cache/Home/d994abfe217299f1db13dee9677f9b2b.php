@@ -317,7 +317,7 @@
             </li>  
 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <?php if((CONTROLLER_NAME== 'BsPart') OR (CONTROLLER_NAME== 'Bscomp')): ?>class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
@@ -329,13 +329,13 @@
                     <span>基本设置</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu" >
+                <ul class="submenu" <?php if((CONTROLLER_NAME== 'BsPart') OR (CONTROLLER_NAME== 'Bscomp') ): ?>style="display:block;" <?php else: ?>style="display:none;"<?php endif; ?> >
                     <li><a href="#">部门管理</a></li>
                     <li><a href="#">职位管理</a></li>
                     <li><a href="#">职员管理</a></li>
                     <li><a href="#">流程设置</a></li>
-                    <li><a href="#">甲方设置</a></li>
-                    <li><a href="#">乙方设置</a></li>
+                    <li><a href="<?php echo U('Home/BsPart/partya');?>">甲方设置</a></li>
+                    <li><a href="<?php echo U('Home/BsPart/partya');?>">乙方设置</a></li>
                     <li><a href="#">账户设置</a></li>
                     <li><a href="#">供应商设置</a></li>
                     <li><a href="#">施工队设置</a></li>
@@ -451,41 +451,7 @@
             <!-- 整站数据显示 upper -->
             <!-- end upper main stats -->
             
-	<div id="main-stats">
-	    <div class="row-fluid stats-row">
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number"><?php echo ($name); ?></span>
-	                visits
-	            </div>
-	            <span class="date">Today</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">3240</span>
-	                users
-	            </div>
-	            <span class="date">February 2014</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">322</span>
-	                orders
-	            </div>
-	            <span class="date">This week</span>
-	        </div>
-	        <div class="span3 stat last">
-	            <div class="data">
-	                <span class="number">$2,340</span>
-	                sales
-	            </div>
-	            <span class="date">last 30 days</span>
-	        </div>
-	    </div>
-	</div>
 
-	
-	Home/Index/index
 
             
         </div>

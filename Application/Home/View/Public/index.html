@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>智工程</title>
@@ -6,23 +6,23 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="/Git/epm/project/Public/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="/Git/epm/project/Public/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="/Git/epm/project/Public/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- libraries -->
-    <link href="/Git/epm/project/Public/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
-    <link href="/Git/epm/project/Public/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="__PUBLIC__/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="__PUBLIC__/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/icons.css" />
 
     
 
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/index.css" type="text/css" media="screen" />    
+    <link rel="stylesheet" href="__PUBLIC__/css/compiled/index.css" type="text/css" media="screen" />    
 
     <!-- open sans font -->
     <!-- <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' /> -->
@@ -45,7 +45,7 @@
                 <span class="icon-bar"></span>
             </button>
             
-            <a class="brand" href="index.html"><img src="/Git/epm/project/Public/img/logo.png" /></a>
+            <a class="brand" href="index.html"><img src="__PUBLIC__/img/logo.png" /></a>
             <!-- 网站图标 -->
             <!-- 头部分的右边边 Start-->
             <ul class="nav pull-right">
@@ -159,7 +159,7 @@
                     </a>
                 </li>
                 <li class="settings hidden-phone">   
-                    <a href="<?php echo U('Home/Login/logout');?>" role="button">
+                    <a href="{:U('Home/Login/logout')}" role="button">
                         <i class="icon-share-alt"></i>
                     </a>
                 </li>
@@ -173,28 +173,28 @@
     <div id="sidebar-nav" style="padding-top:0px;">
 
         <ul id="dashboard-menu" >
-            <li <?php if((CONTROLLER_NAME== 'Index')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq 'Index')" >class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <!-- 开口 -->
-                <a href="<?php echo U('Home/Index/index');?>">
+                <a href="{:U('Home/Index/index')}">
                     <i class="icon-home"></i>
                     <span>首页</span>
                 </a>
             </li>
 
             
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" >class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-edit"></i>
                     <span>合同管理</span>
@@ -209,13 +209,13 @@
             </li> 
 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-legal"></i>
                     <span>项目管理</span>
@@ -241,13 +241,13 @@
             </li> 
 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
 
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-print"></i>
@@ -262,13 +262,13 @@
                 </ul>
             </li>  
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-retweet"></i>
                     <span>财务管理</span>
@@ -289,13 +289,13 @@
                 </ul>
             </li>  
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-bar-chart"></i>
                     <span>报表分析</span>
@@ -317,38 +317,38 @@
             </li>  
 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq 'BsPart') OR ($Think.const.CONTROLLER_NAME eq 'Bscomp')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-cog"></i>
                     <span>基本设置</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu" >
+                <ul class="submenu" <if condition="($Think.const.CONTROLLER_NAME eq 'BsPart') OR ($Think.const.CONTROLLER_NAME eq 'Bscomp') " >style="display:block;" <else />style="display:none;" </if> >
                     <li><a href="#">部门管理</a></li>
                     <li><a href="#">职位管理</a></li>
                     <li><a href="#">职员管理</a></li>
                     <li><a href="#">流程设置</a></li>
-                    <li><a href="#">甲方设置</a></li>
-                    <li><a href="#">乙方设置</a></li>
+                    <li><a href="{:U('Home/BsPart/partya')}">甲方设置</a></li>
+                    <li><a href="{:U('Home/BsPart/partya')}">乙方设置</a></li>
                     <li><a href="#">账户设置</a></li>
                     <li><a href="#">供应商设置</a></li>
                     <li><a href="#">施工队设置</a></li>
                 </ul>
             </li> 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-group"></i>
                     <span>权限设置</span>
@@ -363,13 +363,13 @@
                 </ul>
             </li> 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-envelope"></i>
                     <span>文件传阅</span>
@@ -384,13 +384,13 @@
             </li> 
 
 
-            <li <?php if((CONTROLLER_NAME== '')): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-comments-alt"></i>
                     <span>消息中心</span>
@@ -404,22 +404,22 @@
             </li>  
 
 
-            <li <?php if((CONTROLLER_NAME== 'Personal') OR (CONTROLLER_NAME== 'Login') ): ?>class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq 'Personal') OR ($Think.const.CONTROLLER_NAME eq 'Login') " >  class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
                     <div class="arrow"></div>
                     <div class="arrow_border"></div>
-                </div><?php else: ?>><?php endif; ?>
+                </div><else />></if>
                 <a class="dropdown-toggle" href="#">
                     <i class="icon-user"></i>
                     <span>个人设置</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu" <?php if((CONTROLLER_NAME== 'Personal') OR (CONTROLLER_NAME== 'Login') ): ?>style="display:block;" <?php else: ?>style="display:none;"<?php endif; ?> >
-                    <li><a href="<?php echo U('Home/Personal/information');?>">个人信息中心</a></li>
-                    <li><a href="<?php echo U('Home/Personal/pswReset');?>">修改密码</a></li>
-                    <li><a href="<?php echo U('Home/Login/logout');?>">退出登录</a></li>
+                <ul class="submenu" <if condition="($Think.const.CONTROLLER_NAME eq 'Personal') OR ($Think.const.CONTROLLER_NAME eq 'Login') " >style="display:block;" <else />style="display:none;" </if> >
+                    <li><a href="{:U('Home/Personal/information')}">个人信息中心</a></li>
+                    <li><a href="{:U('Home/Personal/pswReset')}">修改密码</a></li>
+                    <li><a href="{:U('Home/Login/logout')}">退出登录</a></li>
                 </ul>
             </li>                 
                  
@@ -450,59 +450,24 @@
             
             <!-- 整站数据显示 upper -->
             <!-- end upper main stats -->
-            
-	<div id="main-stats">
-	    <div class="row-fluid stats-row">
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number"><?php echo ($name); ?></span>
-	                visits
-	            </div>
-	            <span class="date">Today</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">3240</span>
-	                users
-	            </div>
-	            <span class="date">February 2014</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">322</span>
-	                orders
-	            </div>
-	            <span class="date">This week</span>
-	        </div>
-	        <div class="span3 stat last">
-	            <div class="data">
-	                <span class="number">$2,340</span>
-	                sales
-	            </div>
-	            <span class="date">last 30 days</span>
-	        </div>
-	    </div>
-	</div>
-
-	
-	Home/Index/index
-
+            <block name='maincontent'>
+            </block>
             
         </div>
     </div>
 
 
 	<!-- scripts -->
-    <script src="/Git/epm/project/Public/js/jquery-latest.js"></script>
-    <script src="/Git/epm/project/Public/js/bootstrap.min.js"></script>
-    <script src="/Git/epm/project/Public/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="__PUBLIC__/js/jquery-latest.js"></script>
+    <script src="__PUBLIC__/js/bootstrap.min.js"></script>
+    <script src="__PUBLIC__/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="/Git/epm/project/Public/js/jquery.knob.js"></script>
+    <script src="__PUBLIC__/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="/Git/epm/project/Public/js/jquery.flot.js"></script>
-    <script src="/Git/epm/project/Public/js/jquery.flot.stack.js"></script>
-    <script src="/Git/epm/project/Public/js/jquery.flot.resize.js"></script>
-    <script src="/Git/epm/project/Public/js/theme.js"></script>
+    <script src="__PUBLIC__/js/jquery.flot.js"></script>
+    <script src="__PUBLIC__/js/jquery.flot.stack.js"></script>
+    <script src="__PUBLIC__/js/jquery.flot.resize.js"></script>
+    <script src="__PUBLIC__/js/theme.js"></script>
 
    
 </body>

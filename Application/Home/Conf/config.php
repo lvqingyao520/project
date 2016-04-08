@@ -2,12 +2,12 @@
 return array(
 	//'配置项'=>'配置值'
 	/* 数据库设置 */
-	'DB_DSN'    => 'mysql:host=localhost;dbname=epm;charset=UTF8',
+	'DB_DSN'    => 'mysql:host=192.168.0.113;dbname=epm;charset=UTF8',
 	'DB_TYPE'               =>  'pdo',     // 数据库类型
-    'DB_HOST'               =>  '127.0.0.1', // 服务器地址
+    'DB_HOST'               =>  '192.168.0.113', // 服务器地址
     'DB_NAME'               =>  'epm',          // 数据库名
-    'DB_USER'               =>  'root',      // 用户名
-    'DB_PWD'                =>  '',          // 密码
+    'DB_USER'               =>  'lk',      // 用户名
+    'DB_PWD'                =>  '123',          // 密码
     'DB_PORT'               =>  '3306',        // 端口
     'DB_PREFIX'             =>  'epm_',    // 数据库表前缀
     'DB_PARAMS'          	=>  array(), // 数据库连接参数    
