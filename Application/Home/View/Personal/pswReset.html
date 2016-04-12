@@ -1,0 +1,133 @@
+<extend name="Public/index" />
+
+<block name="maincontent" >
+	<!-- this page specific styles -->
+	<!-- css -->
+    <link rel="stylesheet" href="__PUBLIC__/css/compiled/signup.css" type="text/css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/validation/layer/skin/layer.css" />
+
+	<!-- js -->
+	<script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/validation/layer/layer.js"></script>
+	
+
+   
+	<div class="row-fluid login-wrapper" style="margin-top:8%;">
+		<form action="{:U('Home/Personal/pswReset')}" method="post">
+        <div class="box">
+            <div class="content-wrap">
+                <h6>修改密码</h6>
+                <input class="span12" placeholder="请输入原密码" type="password" name="oripsw" id="oripsw" />
+                <input class="span12" placeholder="请输入新密码" type="password" name="newpsw" id="newpsw" />
+                <input class="span12" placeholder="请再次确认新密码" type="password" name="confirmpsw" id="confirmpsw" />
+                <div class="action">
+                    <button class="btn-glow primary signup" disabled href="index.html" id="btnsubmit" >提&nbsp;&nbsp;交</button>
+                </div>                
+            </div>
+        </div>
+
+        </form>
+    </div>
+
+    <script type="text/javascript">
+
+    var reg = /^\w{6,18}$/;
+    var validate = Array(false,false,false);
+    //外部插件功能js
+    	;!function(){
+
+			$("#oripsw").on("blur",function(){
+			    var psw = $(this).val();
+			    var handle = $(this);
+
+			    $.ajax({ 
+			   		url: "{:U('Home/Personal/checkPsw')}",
+			   		type:'POST',
+			   		dataType:'json',
+			   		data:{'psw':psw},
+			   		success: function(data){
+			   			if(data == '1'){			   				
+			   				layer.tips('√', handle, {tips: [2, 'green'],tipsMore: true});
+			   				validate[0] = true;
+			   				return;
+			   			}else{
+			   				$("#newpsw").val('');
+			   				$("#confirmpsw").val('');
+			   				layer.tips('密码错误', handle, {tips: [2, 'red'],tipsMore: true});
+			   				handle.val('').focus();
+			   				$("#btnsubmit").attr('disabled','disabled');
+			   				validate[1] = false;
+			   			}
+    					
+					},
+					error:function(){
+						layer.tips('验证失败！', handle, {tips: [2, 'red'],tipsMore: true});
+						$("#btnsubmit").attr('disabled','disabled');
+						validate[1] = false;
+					}
+				});	
+			})
+
+			$("#newpsw").on("blur",function(){
+			    var pswa = $(this).val();
+			    var psw = $("#oripsw").val();
+			    if(pswa === psw ){
+			    	layer.tips('密码不可与原密码一样', this, {tips: [2, 'red'],tipsMore: true});
+			    	$(this).val('');
+			    	validate[1] = false;
+			    }else if(reg.test(pswa)){
+			    	layer.tips('√', this, {tips: [2, 'green'],tipsMore: true});
+			    	validate[1] = true;
+			    	return ;
+			    }else{
+			    	layer.tips('密码为6~18位数字、字母！', this, {tips: [2, 'red'],tipsMore: true});
+			    	validate[1] = false;	
+			    }
+			    $("#newpsw").val('');
+			   	$("#confirmpsw").val('');
+				$("#btnsubmit").attr('disabled','disabled');
+			})
+
+			$("#confirmpsw").on("blur",function(){
+			    var pswb = $(this).val();
+			    var pswa = $('#newpsw').val();
+			    if(pswb == ''){
+			    	layer.tips("确认密码不可为空！", $(this), {tips: [2, 'red'],tipsMore: true});
+			    	validate[2] = false;
+			    }else if(!reg.test(pswb)){
+			    	layer.tips('密码为6~18位数字、字母！', this, {tips: [2, 'red'],tipsMore: true});
+			    	validate[2] = false;	
+			    }else if( pswb === pswa ){
+		    	    layer.tips('√',this,{tips:[2,'green'],tipsMore: true});
+			    	validate[2] = true;
+			    	if(validate[0] && validate[1] && validate[2]){
+						$("#btnsubmit").removeAttr('disabled');
+					}
+					return;
+			    }else {
+			    	layer.tips("两次密码不一致！", $(this), {tips: [2, 'red'],tipsMore: true});
+			    	$("#newpsw").val('');
+			   		$("#confirmpsw").val('');
+			    	validate[2] = false;
+			    }
+				$("#btnsubmit").attr('disabled','disabled');
+			})
+		
+			// layer.ready(function(){
+			//   	layer.msg('很高兴一开场就见到你');
+			// });  
+
+		}();
+
+	$('form').submit(function(){
+			$('input').focus();
+			$('input').blur();
+			if(validate[0] && validate[1] && validate[2] ){
+				return true;
+			}else{
+				return false;
+			}
+	})
+
+    </script>
+</block>
