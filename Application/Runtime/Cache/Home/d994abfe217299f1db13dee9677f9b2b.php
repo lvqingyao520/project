@@ -478,7 +478,10 @@
                         <br />
                         &nbsp;&nbsp;<span style="font-size:16px;">年龄：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["age"]); ?></b></a>
                         <br />
+<<<<<<< HEAD
                         <br />
+=======
+>>>>>>> 86f138c2f68c50d76527190e7cc7d8961c48289d
                         <p>上传图片...</p>          
                        	
 						<input  type="file" name="img" id="filesimg" value="" />
