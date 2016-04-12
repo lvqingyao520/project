@@ -144,3 +144,146 @@ INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000040s ]
 INFO: [ app_init ] --END-- [ RunTime:0.000627s ]
 ERR: 无法加载控制器:BsPart
 
+[ 2016-04-12T17:03:44+08:00 ] ::1 /Git/epm/project/index.php/Home/Personal/information.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000033s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000728s ]
+
+[ 2016-04-12T17:03:48+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000043s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000599s ]
+
+[ 2016-04-12T17:03:54+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000046s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000622s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000488s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000619s ]
+SQL: UPDATE `epm_baseset_partya` SET `status`=2 WHERE `id` = 2 [ RunTime:0.019720s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000706s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000812s ]
+
+[ 2016-04-12T17:03:55+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000412s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000458s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000588s ]
+SQL: UPDATE `epm_baseset_partya` SET `status`=1 WHERE `id` = 2 [ RunTime:0.009223s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001043s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001151s ]
+
+[ 2016-04-12T17:03:56+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000426s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000441s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000558s ]
+SQL: UPDATE `epm_baseset_partya` SET `status`=1 WHERE `id` = 1 [ RunTime:0.008656s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000705s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000808s ]
+
+[ 2016-04-12T17:03:56+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/status.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000417s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000442s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000557s ]
+SQL: UPDATE `epm_baseset_partya` SET `status`=2 WHERE `id` = 1 [ RunTime:0.010146s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000700s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000805s ]
+
+[ 2016-04-12T17:03:58+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/updatepartya/id/1.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000053s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000653s ]
+
+[ 2016-04-12T17:03:59+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/updatepartya
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000450s ]
+
+[ 2016-04-12T17:04:29+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000026s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000395s ]
+
+[ 2016-04-12T17:04:44+08:00 ] ::1 /Git/epm/project/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000408s ]
+
+[ 2016-04-12T17:04:52+08:00 ] ::1 /Git/epm/project/index.php/Home/Personal/information.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000409s ]
+
+[ 2016-04-12T17:04:55+08:00 ] ::1 /Git/epm/project/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000041s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000560s ]
+
+[ 2016-04-12T17:05:02+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000402s ]
+
+[ 2016-04-12T17:05:38+08:00 ] ::1 /Git/epm/project/index.php/Home/Personal/information.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000055s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001052s ]
+
+[ 2016-04-12T17:05:57+08:00 ] ::1 /Git/epm/project/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000042s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000484s ]
+
+[ 2016-04-12T17:05:59+08:00 ] ::1 /Git/epm/project/index.php/Home/Personal/information.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000049s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000985s ]
+
+[ 2016-04-12T17:06:57+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000428s ]
+
+[ 2016-04-12T17:08:27+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000050s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000765s ]
+
+[ 2016-04-12T17:08:33+08:00 ] ::1 /Git/epm/project/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000027s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000396s ]
+
+[ 2016-04-12T17:09:22+08:00 ] ::1 /Git/epm/project/index.php/Home/Index/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000029s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000445s ]
+
+[ 2016-04-12T17:09:27+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000406s ]
+
+[ 2016-04-12T17:09:30+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000421s ]
+
+[ 2016-04-12T17:09:31+08:00 ] ::1 /Git/epm/project/index.php/Home/BsPart/partya.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000028s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000399s ]
+

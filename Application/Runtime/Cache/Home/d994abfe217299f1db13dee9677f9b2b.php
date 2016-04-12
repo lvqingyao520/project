@@ -472,11 +472,11 @@
                     <div class="personal-image">
                         <img src="/Git/epm/project/Public/<?php echo ($user["imgurl"]); ?>" class="avatar img-circle" style='width:150px;height:150px;'>
                         <br />
-                        &nbsp;&nbsp;<span style="font-size:16px;">用户名：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["username"]); ?></b></a>
+                        &nbsp;&nbsp;<span style="font-size:16px;">用户名：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["username"]); ?></a></b>
                         <br />
-                        &nbsp;&nbsp;<span style="font-size:16px;">姓名：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["truename"]); ?></b></a>
+                        &nbsp;&nbsp;<span style="font-size:16px;">姓名：</span><b><a  id="afortname" style="cursor:pointer;"><?php echo ($user["truename"]); ?></a></b>
                         <br />
-                        &nbsp;&nbsp;<span style="font-size:16px;">年龄：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["age"]); ?></b></a>
+                        &nbsp;&nbsp;<span style="font-size:16px;">年龄：</span><b><a id="aforage" style="cursor:pointer;"><?php echo ($user["age"]); ?></a></b>
                         <br />
                         <br />
 
@@ -634,7 +634,9 @@
 			    	validate[0] = false;	
 			    	
 			    }else if(/^[a-zA-Z ]{5,30}$/.test(tname) ||  /^[\u4e00-\u9fa5]{2,10}$/.test(tname) ){
+
 			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    	$('#afortname').html(tname);
 			    	validate[0] = true;
 		    	
 			    }else{
@@ -647,33 +649,59 @@
 
 		$("#identcard").on("blur",function(){
 			    var identcard = $(this).val();
-			   	
+			   	var $this = $(this);
 			    if(identcard === '' ){
-			    	layer.tips('年龄不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	layer.tips('身份证号码不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
 			    	validate[1] = false;	
-			    }else if(/^([1-9]\d{16}[0-9Xx]{1})|([1-9]\d{13}[0-9Xx]{1})$/.test(identcard) ){
-			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
-			    	validate[1] = true;	
+			    }else if(/^([1-9]\d{16}[0-9Xx]{1})$|^([1-9]\d{13}[0-9Xx]{1})$/.test(identcard) ){
+			    	$.ajax({
+			    		url:"<?php echo U('Home/Personal/checkIdentcard');?>",
+			    		data:{'identcard':identcard},
+			    		dataType:'json',
+			    		type:"POST",
+			    		async:false,
+			    		success:function(data){
+			    			if(data=='1'){
+			    				layer.tips('√', $this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    				validate[1] = true;
+			    			}else{
+			    				layer.tips('该身份证号已被他人使用！', $this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    				validate[1] = false;
+			    			}
+			    		}
+			    	});	  		
 			    }else{
 			    	layer.tips('身份证号码格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
 			    	validate[1] = false;		
-			    }			   
-			    
+			    }			   			    
 		});
 
 		$("#phone").on("blur",function(){
 			    var phone = $(this).val();
-			   	
+			   	var $this = $(this);
 			    if(phone === '' ){
 			    	layer.tips('手机号不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
-			    	
 			    	validate[2] = false;	
 			    }else if(/^1[3458]\d{9}$/.test(phone)){
-			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
-			    	validate[2] = true;			    	
+			    	
+			    	$.ajax({
+			    		url:"<?php echo U('Home/Personal/checkPhone');?>",
+			    		data:{'phone':phone},
+			    		dataType:'json',
+			    		type:"POST",
+			    		async:false,
+			    		success:function(data){
+			    			if(data=='1'){
+			    				layer.tips('√', $this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    				validate[2] = true;
+			    			}else{
+			    				layer.tips('该手机号已被他人使用！', $this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    				validate[2] = false;
+			    			}
+			    		}
+			    	});	    	    	
 			    }else{
 			    	layer.tips('手机号格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
-			    	
 			    	validate[2] = false;		
 			    }			    
 			    
@@ -681,18 +709,32 @@
 
 		$("#email").on("blur",function(){
 			    var email = $(this).val();
-			   	
+			   	var $this = $(this);
 			    if(email === '' ){
+
 			    	layer.tips('邮箱不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
-			    	
 			    	validate[3] = false;	
 			    	
 			    }else if(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email)){
-			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
-			    	validate[3] = true;			    	
+			    	
+			    	$.ajax({
+			    		url:"<?php echo U('Home/Personal/checkEmail');?>",
+			    		data:{'email':email},
+			    		dataType:'json',
+			    		type:"POST",
+			    		async:false,
+			    		success:function(data){
+			    			if(data=='1'){
+			    				layer.tips('√', $this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    				validate[3] = true;
+			    			}else{
+			    				layer.tips('该邮箱名已被他人使用！', $this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    				validate[3] = false;
+			    			}
+			    		}
+			    	});			    				    	
 			    }else{
 			    	layer.tips('邮箱格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});	
-			    	
 			    	validate[3] = false;	
 			    }			    
 			    
@@ -703,23 +745,33 @@
 			   	
 			    if(birthday === '' ){
 			    	layer.tips('出生日期不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
-			    	
 			    	validate[4] = false;	
 			    }else if(/^\d{4}-(?:(?:0[13-9]|1[12])-(?:0[1-9]|[12]\d|30)|(?:0[13578]|1[02])-31|02-(?:0[1-9]|1\d|2[0-8]))|(?:(?:\d{2}(?:[13579][26]|[2468][048])|(?:[13579][26]|[2468][048])00)-02-29)$/.test(birthday)){
-			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
-			    	validate[4] = true;			    	
+			    	var birthdayarr = birthday.split('-',1)[0];
+			    	var nowtime = new Date();
+			    	var nowYear = nowtime.getFullYear();
+			    	if( (birthdayarr <= nowYear - 18) && (birthdayarr >= nowYear - 65) ){
+			    		layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    		$('#aforage').html(nowYear - birthdayarr);
+			    		validate[4] = true;
+			    	}else{
+			    		if(birthdayarr > nowYear - 18){
+			    			layer.tips('孩子啊，回学校好好读书去吧！', this, {tips: [1, 'rgba(255,0,0,0.65)'] , tipsMore: true});
+			    		}else if(birthdayarr < nowYear - 65){
+			    			layer.tips('老大爷，您该回家享受天伦之乐了！', this, {tips: [1, 'rgba(255,0,0,0.65)'] , tipsMore: true});
+			    		}
+			    		validate[4] = false;
+			    	}
+ 				    	
 			    }else{
 			    	layer.tips('日期格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'] , tipsMore: true});	
 			    	
 			    	validate[4] = false;	
 			    }			    
-			    
-			    
+    
 		});
 
 	}();
-
-	
 
 
 	$('form').submit(function(){

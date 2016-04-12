@@ -17,7 +17,12 @@
     <!-- global styles -->
     <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/layout.css" />
     <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/icons.css" />  
+    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/icons.css" />
+
+    
+
+    <!-- this page specific styles -->
+    <link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/index.css" type="text/css" media="screen" />    
 
     <!-- open sans font -->
     <!-- <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' /> -->
@@ -446,49 +451,252 @@
             <!-- 整站数据显示 upper -->
             <!-- end upper main stats -->
             
-<!-- this page specific styles -->
-<link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/index.css" type="text/css" media="screen" />
-	<div id="main-stats">
-	    <div class="row-fluid stats-row">
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number"><?php echo ($name); ?></span>
-	                visits
-	            </div>
-	            <span class="date">Today</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">3240</span>
-	                users
-	            </div>
-	            <span class="date">February 2014</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">322</span>
-	                orders
-	            </div>
-	            <span class="date">This week</span>
-	        </div>
-	        <div class="span3 stat last">
-	            <div class="data">
-	                <span class="number">$2,340</span>
-	                sales
-	            </div>
-	            <span class="date">last 30 days</span>
-	        </div>
-	    </div>
-	</div>
+	<!-- this page specific styles -->
 
-	
-	Home/Index/index
+    <link href="/Git/epm/project/Public/css/lib/bootstrap-wysihtml5.css" type="text/css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/lib/uniform.default.css" type="text/css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/lib/select2.css" type="text/css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/lib/bootstrap.datepicker.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/form-showcase.css" type="text/css" media="screen" />
+   <link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/ui-elements.css" type="text/css" media="screen" />
 
-	<!-- scripts -->
+
+
+    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/validation/layer/skin/layer.css" />
+
+    <!-- js -->
+    <script type="text/javascript" src="/Git/epm/project/Public/validation/layer/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="/Git/epm/project/Public/validation/layer/layer.js"></script>
+    <div id="pad-wrapper" class="form-page">
+                <div class="row-fluid form-wrapper">
+                    <!-- left column -->
+                    <div class="span8 column">
+                        <div class="span8 column">
+                            <div class="alert alert-info">
+                            <i class="icon-lightbulb"></i>
+                            请修改甲方信息：）
+                            <br><h3>甲方信息资料：</h3>
+                        </div>
+                         <form action="/Git/epm/project/index.php/Home/BsPart/updatepartya" method="post">
+                            
+                            <div class="field-box">
+                                <label>甲方名称*</label>
+                                <input class="span8 inline-input" type="text" name="aname"  value="<?php echo ($partya["aname"]); ?>" required/>
+                            </div> 
+                            <div class="field-box">
+                                <label>开户银行*</label>
+                                <input class="span8 inline-input" type="text" name="bank" value="<?php echo ($partya["bank"]); ?>" required/>
+                            </div> 
+                            <div class="field-box">
+                                <label>开户账号*</label>
+                                <input class="span8 inline-input" type="text" id="account" value="<?php echo ($partya["account"]); ?>" name="account" required/>
+                            </div>  
+                            <div class="field-box">
+                                <label>联系信息</label>
+                                <table>
+                                  <tr>
+                                    <td>
+                                      <label>联系人*</label>
+                                    </td>
+                                    <td>
+                                      <input class="inline-input" type="text" name="contact" value="<?php echo ($partya["aname"]); ?>" required/>
+                                    </td>
+                                   
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>电话</label>
+                                    </td>
+                                    <td>
+                                      <input class="inline-input" type="text" id="tel" name="tel" value="<?php echo ($partya["tel"]); ?>"  placeholder="xxx-xxxxxxxx或者xxxx-xxxxxxx"/>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>手机*</label>
+                                    </td>
+                                    <td>
+                                      <input class="inline-input" type="text" id="phone" name="phone" value="<?php echo ($partya["phone"]); ?>" required/>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                    <label>Email</label>
+                                    </td>
+                                    <td>
+                                    <input class="inline-input" type="text" id="email" name="email" value="<?php echo ($partya["email"]); ?>"/>
+
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>地址</label>
+                                    </td>
+                                    <td>
+                                     <input class="inline-input" type="text" name="address" value="<?php echo ($partya["address"]); ?>"/>
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                    <td>
+                                      <label>邮编</label>
+                                    </td>
+                                    <td>
+                                      <input class="inline-input" type="text" id="code" name="code" value="<?php echo ($partya["code"]); ?>"/>
+                                      <input  type="hidden"  name="id" value="<?php echo ($partya["id"]); ?>"/>
+                                    </td>
+                                  </tr>
+                                </table>
+                            </div>                            
+                            <div class="field-box">
+                                <label>备注</label>
+                                <textarea class="span8" rows="4" name="remark" ><?php echo ($partya["remark"]); ?></textarea>
+                            </div>
+                            <div class="field-box">
+                              <center>
+                                <table>
+                                  <tr>
+                                    <td>
+                                      <button type="submit" class="btn-flat default">添加</button>
+                                    </td>
+                                    <td>
+                                      <button type="reset" class="btn-flat danger">重置</button>
+                                    </td>
+                                    <td width="100px">
+                                      &nbsp;
+                                    </td>
+                                  </tr>
+                                </table>
+                              </center>
+                            </div>
+                        </form>
+                    </div>
+
+               
+                </div>
+    </div>
+     <script type="text/javascript">
+
+      
+    
+      //外部插件功能js
+      ;!function(){
+
+       var CACCOUNT=false;
+       var CTEL=true;
+       var CPHONE=false;
+       var CEMAIL=true;
+       var CCODE=true;
+       $("#account").on("blur",function(){
+          var reg=/^(\d{16}|\d{19})$/;
+          var account = $(this).val();
+          
+          if(reg.test(account)){
+            layer.tips('√', this, {tips: [1, 'rgba(0,100,0,0.7)'],tipsMore: true});
+
+            CACCOUNT=true;
+          }else{
+            layer.tips('不是正确的银行账号', this, {tips: [1, 'rgba(100,0,0,0.7)'],tipsMore: true}); 
+            console.log(111);
+            CACCOUNT=false;
+            return false;
+          }
+          
+      })
+      $("#tel").on("blur",function(){
+          var reg=/(\(\d{3,4}\)|\d{3,4}-|\s)?\d{8}/;
+          var tel = $(this).val();
+          
+          if(reg.test(tel)){
+            layer.tips('√', this, {tips: [1, 'rgba(0,100,0,0.7)'],tipsMore: true});
+            CTEL=true;
+          }else{
+            if(tel==""){
+              CTEL=true;
+
+            }else{
+              layer.tips('不是正确的电话格式', this, {tips: [1, 'rgba(100,0,0,0.7)'],tipsMore: true});
+              CTEL=false;
+            return false;
+            }
+            
+          }
+       })
+      $("#phone").on("blur",function(){
+          var reg=/^1[3458]\d{9}$/;
+          var phone = $(this).val();
+          
+          if(reg.test(phone)){
+            layer.tips('√', this, {tips: [1, 'rgba(0,100,0,0.7)'],tipsMore: true});
+            
+            CPHONE=true;
+          }else{
+            layer.tips('不是正确的手机格式！', this, {tips: [1, 'rgba(100,0,0,0.7)'],tipsMore: true});
+            console.log(333);
+            CPHONE=false;
+            return false; 
+          }
+      })
+      $("#email").on("blur",function(){
+          var reg=/\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
+          var email = $(this).val();
+          
+          if(reg.test(email)){
+            layer.tips('√', this, {tips: [1, 'rgba(0,100,0,0.7)'],tipsMore: true});
+            CEMAIL=true;
+            
+          
+          }else{
+            if(email==""){
+              CEMAIL=true;
+            }else{
+            layer.tips('不是正确的邮箱格式！', this, {tips: [1, 'rgba(100,0,0,0.7)'],tipsMore: true});
+            console.log(111);
+            CEMAIL=false;
+            return false;
+            }
+          }
+      })
+      $("#code").on("blur",function(){
+          var reg=/[1-9]{1}(\d+){5}/;
+          var code = $(this).val();
+          
+          if(reg.test(code)){
+            layer.tips('√', this, {tips: [1, 'rgba(0,100,0,0.7)'],tipsMore: true});
+            CCODE=true;
+          }else {
+            if(code==""){
+            CCODE=true;
+            }else{
+            layer.tips('不是正确的邮政编码！', this, {tips: [1, 'rgba(100,0,0,0.7)'],tipsMore: true}); 
+            CCODE=false;
+            return false;
+            }
+          }
+      })
+      $("form").submit(function(){
+            
+           $("input").focus();
+           $("input").blur(); 
+           
+          if(CACCOUNT && CPHONE && CTEL && CEMAIL && CCODE){
+
+            return true;
+          }
+            return false;
+       });
+    }();
+    </script>
+     
+    <script src="/Git/epm/project/Public/js/wysihtml5-0.3.0.js"></script>
     <script src="/Git/epm/project/Public/js/jquery-latest.js"></script>
     <script src="/Git/epm/project/Public/js/bootstrap.min.js"></script>
+    <script src="/Git/epm/project/Public/js/bootstrap-wysihtml5-0.0.2.js"></script>
+    <script src="/Git/epm/project/Public/js/bootstrap.datepicker.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery.uniform.min.js"></script>
+    <script src="/Git/epm/project/Public/js/select2.min.js"></script>
     <script src="/Git/epm/project/Public/js/theme.js"></script>
-    
+   
+
 
             
         </div>

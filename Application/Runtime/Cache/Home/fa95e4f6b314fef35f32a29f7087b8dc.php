@@ -446,49 +446,248 @@
             <!-- 整站数据显示 upper -->
             <!-- end upper main stats -->
             
-<!-- this page specific styles -->
-<link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/index.css" type="text/css" media="screen" />
-	<div id="main-stats">
-	    <div class="row-fluid stats-row">
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number"><?php echo ($name); ?></span>
-	                visits
-	            </div>
-	            <span class="date">Today</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">3240</span>
-	                users
-	            </div>
-	            <span class="date">February 2014</span>
-	        </div>
-	        <div class="span3 stat">
-	            <div class="data">
-	                <span class="number">322</span>
-	                orders
-	            </div>
-	            <span class="date">This week</span>
-	        </div>
-	        <div class="span3 stat last">
-	            <div class="data">
-	                <span class="number">$2,340</span>
-	                sales
-	            </div>
-	            <span class="date">last 30 days</span>
-	        </div>
-	    </div>
-	</div>
+	<!-- this page specific styles -->
+    <link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/tables.css" type="text/css" media="screen" />  
+    <script type="text/javascript" src="/Git/epm/project/Public/validation/layer/jquery-1.11.3.min.js"></script> 
 
-	
-	Home/Index/index
 
-	<!-- scripts -->
+	<div id="pad-wrapper">
+                
+                <!-- products table-->
+                <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
+                <div class="table-wrapper products-table section">
+                    <div class="row-fluid head">
+                        <div class="span12">
+                            <h4><b>甲方设置</b></h4>
+                        </div>
+                    </div>
+
+                    <div class="row-fluid filter-block">
+                        <div class="pull-left">
+                          <a class="btn-flat success new-product" href="<?php echo U('Home/BsPart/addpartya');?>">+ 添加甲方</a>
+                        </div>
+                      
+                        <div class="pull-right">
+
+                          
+                          <form action="/Git/epm/project/index.php/Home/BsPart/partya" method="get" class="form-search">
+
+                            <!-- <div class="ui-select" style="width:40px;">
+                                <select name="status" >
+                                  <option value=""/>全部
+                                  <option value="1" <?php echo ($_GET['status']=='1'?"selected":""); ?> />普通
+                                  <option value="2" <?php echo ($_GET['status']=='2'?"selected":""); ?> />禁用
+                                </select>
+                            </div> -->
+                          	<div class="btn-group">
+                                <button class="btn glow">状态</button>
+                                <button class="btn glow dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li class=<?php if(($_GET['status'] != 1) and ($_GET['status'] != 2) ): ?>"active"   <?php else: ?> ""<?php endif; ?>><a href="/Git/epm/project/index.php/Home/BsPart/partya/status/0/keyword/<?php echo ($_GET['keyword']); ?>">全部</a></li>
+                                    <li class=<?php echo ($_GET['status']=='1'?"active":""); ?>><a href="/Git/epm/project/index.php/Home/BsPart/partya/status/1/keyword/<?php echo ($_GET['keyword']); ?>">普通</a></li>
+                                    <li class=<?php echo ($_GET['status']=='2'?"active":""); ?>><a href="/Git/epm/project/index.php/Home/BsPart/partya/status/2/keyword/<?php echo ($_GET['keyword']); ?>">禁用</a></li>
+                                </ul>
+                            </div>
+                            <div class="input-append" >
+						        <input type="text" name="keyword" value="<?php echo ($_GET['keyword']); ?>" class="search-query" style="width:60px;">
+						        <button type="submit" class="btn">搜</button>
+						        
+						    </div>
+                          </form>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="row-fluid table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th >
+                                        
+                                        序号
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>名称
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>联系人
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>电话
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>开户银行
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>开户账号
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>状态
+                                    </th>
+                                    <th>
+                                        <span class="line"></span>操作
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- row -->
+                                <?php if(is_array($partya)): foreach($partya as $key=>$pa): ?><tr>
+                                    <td>
+                                        <?php echo ($pa["id"]); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo ($pa["aname"]); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo ($pa["contact"]); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo ($pa["tel"]); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo ($pa["bank"]); ?>
+                                    </td>
+                                    <td>
+                                        <?php echo ($pa["account"]); ?>
+                                    </td>
+                                    <td>
+                                        
+                                        <div  class="slider-frame <?php if($pa["status"] == 1 ): ?>info<?php else: endif; ?>">
+                                          <span sid="<?php echo ($pa["id"]); ?>" data-on-text="普通" data-off-text="禁用" class="slider-button <?php if($pa["status"] == 1 ): ?>on<?php else: endif; ?>"><?php echo $arr[$pa['status']]; ?></span>
+                                      </div>
+                                    </td>
+                                    <td>
+                                        <a href="<?php echo U('Home/BsPart/updatepartya/id/'.$pa[id]);?>"><button class="btn btn-min" type="button"><i class="icon-pencil"></i></button></a>
+                                        <a href="<?php echo U('Home/BsPart/delpartya/id/'.$pa[id]);?>"><button class="btn btn-min" type="button"><i class="icon-remove"></i></button></a>
+                                        
+                                       
+                                        
+                                      
+
+                                    </td>
+                                </tr><?php endforeach; endif; ?>
+                                <!-- row -->
+                              
+                            </tbody>
+                        </table>
+                   
+                           
+                      
+                       
+                        <div id="page" class="pagination pull-right">
+                          <?php echo ($page); ?>
+                        </div>
+
+                          <style type='text/css'>
+                              #page a,#page span{
+                                  background-color: #fff;
+                                  border: 1px solid #ddd;
+                                  float: left;
+                                  line-height: 1.42857;
+                                  margin-left: -1px;
+                                  position: relative;
+                                  text-decoration: none;
+                                  border-color: #d0dde9;
+                                  color: #4f4f4f;
+                                  font-weight: 600;
+                                  padding: 2px 12px;
+                                  box-shadow: 0px 2px 0px 0px #efefef;
+                                  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+                              }
+                              #page span{
+                                 color:#0088cc;
+                              }
+                              #page input{
+                                float:left;
+                                width:30px;
+                                height:12.5px;
+                              }
+
+                          </style>
+                           <script type="text/javascript">
+                            
+                          $(function(){
+                            
+                              $('#z').blur(function(){
+                             
+                              var url=$('.tiaozhuan').attr("href");
+                              
+                              var strs=url.substr(0,400);
+
+                              
+                              var value=this.value;
+                              
+                              var all=$('#total').attr("total");
+                              var i=parseFloat(all);//将字符转化成数字
+
+                              if(value<=i && !isNaN(value) && value>0){
+                              value=Math.ceil(value);
+                              }else{
+                              value='';
+                              }
+                              var newurl=strs+value;
+                              $('.tiaozhuan').attr("href",newurl);
+                              })
+
+                            });
+
+
+
+                        </script>
+
+                    </div>
+                </div>
+                <!-- end products table -->
+
+               
+    </div>
+    
+     <script src="/Git/epm/project/Public/js/wysihtml5-0.3.0.js"></script>
     <script src="/Git/epm/project/Public/js/jquery-latest.js"></script>
+    
     <script src="/Git/epm/project/Public/js/bootstrap.min.js"></script>
     <script src="/Git/epm/project/Public/js/theme.js"></script>
-    
+     <script type="text/javascript">
+        $(function () {
+          // Switch slide buttons
+            $('.slider-button').click(function() {
+                if ($(this).hasClass("on")) {
+                    $(this).removeClass('on').html($(this).data("off-text"));
+                    $(this).parent(".slider-frame").removeClass('info');
+                    var sid=$(this).attr('sid');
+                    $.ajax({ 
+                        url: "<?php echo U('Home/BsPart/status');?>",
+                        type:'POST',
+                        dataType:'json',
+                        data:{'status':2,'id':sid},
+                        success: function(data){
+
+                        },
+                    
+                    });    
+                } else {
+                    $(this).addClass('on').html($(this).data("on-text"));
+                    $(this).parent(".slider-frame").addClass('info');
+                    var sid=$(this).attr('sid');
+                    $.ajax({ 
+                        url: "<?php echo U('Home/BsPart/status');?>",
+                        type:'POST',
+                        dataType:'json',
+                        data:{'status':1,'id':sid},
+                        success: function(data){
+                           
+                        },
+                    
+                    });
+                }
+            });
+
+        });
+    </script>
+     
 
             
         </div>
