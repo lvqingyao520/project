@@ -203,4 +203,54 @@ class PersonalController extends PublicController{
 		}
 	}
 
+	public function checkPhone(){
+		$this -> checkSingle();
+	}
+
+	public function checkEmail(){
+		$this -> checkSingle();
+	}
+
+	public function checkIdentcard(){
+		$this -> checkSingle();
+	}
+
+	private function checkSingle(){
+		//ajax验证邮箱
+		if(IS_AJAX){
+			//获取变量
+			
+			$id = $_SESSION['home']['uid'];
+			$username = $_SESSION['home']['username'];
+
+			//查询变量
+			$pdu = M('personal_users');
+			$keys = array_keys($_POST)[0];
+			$check = I("post.".$keys);
+			// $check = $_POST[$keys];
+			
+			$gena = $pdu-> field("$keys")
+						-> where(array('id'=>$id,'username'=>$username))
+						-> find()[$keys];
+			
+			$genb = $pdu-> field("$keys")
+						-> where(array($keys=>$check))
+						-> select();
+			
+			//判断邮箱唯一性
+			if(is_array($genb)){
+				if(count($genb)>=2){
+					$this -> ajaxReturn(0);
+				}else if((count($genb)==1) && ($gena === $genb[0][$keys])){
+					$this -> ajaxReturn(1);
+				}else {
+					$this -> ajaxReturn(0);
+				}				
+			}else{
+				$this -> ajaxReturn(1);
+			}		
+		}else{
+			$this -> ajaxReturn(0);
+		}
+	}
 }
