@@ -451,31 +451,298 @@
             <!-- 整站数据显示 upper -->
             <!-- end upper main stats -->
             
+<!-- css -->
+<link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/form-showcase.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/validation/layer/skin/layer.css" />
 
+	
 
-            
+<!-- js -->
+<script type="text/javascript" src="/Git/epm/project/Public/validation/layer/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="/Git/epm/project/Public/validation/layer/layer.js"></script>
+<script type="text/javascript" src="/Git/epm/project/Public/laydate/laydate.js" ></script>
+
+<div class="content wide-content">
+        <div class="container-fluid">
+            <div class="settings-wrapper" id="pad-wrapper">
+            <form action="<?php echo U('Home/Personal/information');?>"  method="post" enctype='multipart/form-data'>
+            <input type="hidden" name='oldimg' value="<?php echo ($user["imgurl"]); ?>" />
+                <!-- avatar column -->
+                <div class="span3 avatar-box">
+                    <div class="personal-image">
+                        <img src="/Git/epm/project/Public/<?php echo ($user["imgurl"]); ?>" class="avatar img-circle" style='width:150px;height:150px;'>
+                        <br />
+                        &nbsp;&nbsp;<span style="font-size:16px;">用户名：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["username"]); ?></b></a>
+                        <br />
+                        &nbsp;&nbsp;<span style="font-size:16px;">姓名：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["truename"]); ?></b></a>
+                        <br />
+                        &nbsp;&nbsp;<span style="font-size:16px;">年龄：</span><b><a href="information.html" style="cursor:pointer;"><?php echo ($user["age"]); ?></b></a>
+                        <br />
+                        <p>上传图片...</p>          
+                       	
+						<input  type="file" name="img" id="filesimg" value="" />
+                    </div>
+                   
+                </div>
+
+                <!-- edit form column -->
+                <div class="span9 personal-info">
+                    <div class="alert alert-info">
+                        <i class="icon-lightbulb"></i>
+                        请填写个人真实信息：)
+                        <br><h3>个人信息资料：</h3>
+                    </div>
+                    <h6 class="personal-title"></h6>
+
+                   
+                        <div class="field-box">
+                        	<table >
+	                        	<tr>
+		                        	<td>
+			                            <label style='color:#4993C6;'>真实姓名：</label>
+			                            <input class="span4 inline-input"  name="tname" value="<?php echo ($user["truename"]); ?>" id="tname" type="text"  />
+		                            </td>
+	                            	<td>
+		                            	<label style='color:#4993C6;'>身份证：</label>
+		                            	<input class="span5 inline-input"  name="identcard" value="<?php echo ($user["identcard"]); ?>" id='identcard' type="text"  />
+		                           </td>
+                            	</tr>
+                            </table>
+                        </div>
+                       
+                        <div class="field-box">
+                        	<table >
+	                        	<tr>
+		                        	<td>
+			                            <label style='color:#4993C6;'>手机号：</label>
+			                            <input class="span4 inline-input"  name="phone" id="phone" value="<?php echo ($user["phone"]); ?>" type="text"  />
+		                            </td>
+	                            	<td>
+	                            		<label style='color:#4993C6;'>邮箱：</label>
+                            			<input class="span5 inline-input"  name="email" id="email" value="<?php echo ($user["email"]); ?>" type="text"  />
+                            		</td>
+                            	</tr>
+                            </table>
+                        </div>
+
+                        <div class="field-box">
+                        <label style='color:#4993C6;'>性别：</label>
+                        	<table>
+	                        	<tr>
+		                        	<td>
+	                                    <label class="radio">
+	                                        <div id="uniform-optionsRadios1" class="radio"><span class="checked"><input name="sex" id="optionsRadios1" value="2" <?php if(($user["sex"] == '2') OR ($user["sex"] == '2') ): ?>checked<?php endif; ?> type="radio" />男</span></div>
+	                                    </label>
+		                            </td>
+		                            <td >
+	                                    <label class="radio">
+	                                        <div id="uniform-optionsRadios2" class="radio"><span><input name="sex" id="optionsRadios2" value="1" <?php if($user["sex"] == '1' ): ?>checked<?php endif; ?> type="radio" />女</span></div>
+	                                    </label>
+			                        </td>			                      
+                            	</tr>
+                            </table>
+                        </div>
+
+                        <div class="field-box">
+	                        <table style="height:1px;margin-top:-10px;">
+		                        <tr>
+			                        <td>
+										<input disabled class="span4 inline-input" style="height:1px;" type="text"  />
+									</td>
+									<td>
+										<input disabled class="span5 inline-input" style="height:1px;"  type="text"  />
+									</td>
+								</tr>
+							</table>
+						</div>
+        
+						<div class="field-box">
+							<table >
+	                        	<tr>
+		                        	<td>
+			                            <label style='color:#4993C6;'>生日：</label>
+										<input placeholder="请输入日期,格式xxxx-xx-xx" name="birthday" id="birthday" value="<?php echo ($user["birthday"]); ?>" class="span4 inline-input laydate-icon" onclick="laydate()" type='text' />
+		                            </td>
+	                            	<td>
+	                            		<label style='color:#4993C6;'>入职日期：</label>
+										<input  value="<?php echo ($user["workday"]); ?>" disabled class="span5 inline-input " type='text' />
+                            		</td>
+                            	</tr>
+                            </table>                            
+                        </div>
+
+						<div class="field-box">
+                        	<table >
+	                        	<tr>
+		                        	<td>
+			                            <label style='color:#4993C6;'>所属部门：</label>
+			                            <input disabled class="span4 inline-input"  value="<?php echo ($user["depart"]); ?>" type="text"  />
+		                            </td>
+	                            	<td>
+	                            		<label style='color:#4993C6;'>职位：</label>
+                            			<input disabled class="span5 inline-input"  value="<?php echo ($user["job"]); ?>" type="text"  />
+                            		</td>
+                            	</tr>
+                            </table>
+                        </div>
+
+                        <div class="field-box">
+                        	<table >
+	                        	<tr>
+		                        	<td>
+			                            <label style='color:#4993C6;'>最后一次登录时间：</label>			                            
+			                            <input disabled class="span4 inline-input"  value="<?php echo ($user["lastlogintime"]); ?>"  type='text' />
+		                            </td>
+	                            	<td>
+	                            		&nbsp;
+                            		</td>
+                            	</tr>
+                            </table>
+                        </div>
+
+                        <div class="span6 field-box actions">
+                            <input class="btn-glow primary" value="保      存" type="submit" id="sbmbtn" style="position:relative;left:12%;top:20px;" />                          	
+                            <button  class="btn-flat gray" style="position:relative;left:35%;top:20px;"  type="reset">重&nbsp;&nbsp;&nbsp;&nbsp;置</button>
+                        </div>
+                    
+                </div>
+            </form>
+            </div>
         </div>
     </div>
 
+	
+
+
+    <script>
+    var validate = Array(false,false,false,false,false);
+
+	;!function(){
+		
+		//日期皮肤
+		laydate.skin('default');
+
+		//验证
+		$("#tname").on("blur",function(){
+			    var tname = $(this).val();
+			   	
+			    if(tname === '' ){
+			    	layer.tips('姓名不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	
+			    	validate[0] = false;	
+			    	
+			    }else if(/^[a-zA-Z ]{5,30}$/.test(tname) ||  /^[\u4e00-\u9fa5]{2,10}$/.test(tname) ){
+			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    	validate[0] = true;
+		    	
+			    }else{
+			    	layer.tips('姓名为5~30位字母或者2~10个汉字！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});	
+			    	
+			    	validate[0] = false;	
+			    }
+			    
+		});
+
+		$("#identcard").on("blur",function(){
+			    var identcard = $(this).val();
+			   	
+			    if(identcard === '' ){
+			    	layer.tips('年龄不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	validate[1] = false;	
+			    }else if(/^([1-9]\d{16}[0-9Xx]{1})|([1-9]\d{13}[0-9Xx]{1})$/.test(identcard) ){
+			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    	validate[1] = true;	
+			    }else{
+			    	layer.tips('身份证号码格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	validate[1] = false;		
+			    }			   
+			    
+		});
+
+		$("#phone").on("blur",function(){
+			    var phone = $(this).val();
+			   	
+			    if(phone === '' ){
+			    	layer.tips('手机号不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	
+			    	validate[2] = false;	
+			    }else if(/^1[3458]\d{9}$/.test(phone)){
+			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    	validate[2] = true;			    	
+			    }else{
+			    	layer.tips('手机号格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	
+			    	validate[2] = false;		
+			    }			    
+			    
+		});
+
+		$("#email").on("blur",function(){
+			    var email = $(this).val();
+			   	
+			    if(email === '' ){
+			    	layer.tips('邮箱不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	
+			    	validate[3] = false;	
+			    	
+			    }else if(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(email)){
+			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    	validate[3] = true;			    	
+			    }else{
+			    	layer.tips('邮箱格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});	
+			    	
+			    	validate[3] = false;	
+			    }			    
+			    
+		});
+
+		$("#birthday").on("blur",function(){
+			    var birthday = $(this).val();
+			   	
+			    if(birthday === '' ){
+			    	layer.tips('出生日期不可以为空！', this, {tips: [1, 'rgba(255,0,0,0.65)'],tipsMore: true});
+			    	
+			    	validate[4] = false;	
+			    }else if(/^\d{4}-(?:(?:0[13-9]|1[12])-(?:0[1-9]|[12]\d|30)|(?:0[13578]|1[02])-31|02-(?:0[1-9]|1\d|2[0-8]))|(?:(?:\d{2}(?:[13579][26]|[2468][048])|(?:[13579][26]|[2468][048])00)-02-29)$/.test(birthday)){
+			    	layer.tips('√', this, {tips: [1, 'rgba(0,128,0,0.65)'],tipsMore: true});
+			    	validate[4] = true;			    	
+			    }else{
+			    	layer.tips('日期格式错误！', this, {tips: [1, 'rgba(255,0,0,0.65)'] , tipsMore: true});	
+			    	
+			    	validate[4] = false;	
+			    }			    
+			    
+			    
+		});
+
+	}();
+
+	
+
+
+	$('form').submit(function(){
+		$('input').focus();
+		$('input').blur();
+		if(validate[0] && validate[1] && validate[2] && validate[3] &&validate[4]){
+			return true;
+		}else{
+			return false;
+		}
+	})
+
+
+
+	</script>
 
 	<!-- scripts -->
     <script src="/Git/epm/project/Public/js/jquery-latest.js"></script>
     <script src="/Git/epm/project/Public/js/bootstrap.min.js"></script>
-    <script src="/Git/epm/project/Public/js/jquery-ui-1.10.2.custom.min.js"></script>
-    <!-- knob -->
-    <script src="/Git/epm/project/Public/js/jquery.knob.js"></script>
-    <!-- flot charts -->
-    <script src="/Git/epm/project/Public/js/jquery.flot.js"></script>
-    <script src="/Git/epm/project/Public/js/jquery.flot.stack.js"></script>
-    <script src="/Git/epm/project/Public/js/jquery.flot.resize.js"></script>
     <script src="/Git/epm/project/Public/js/theme.js"></script>
 
-   
+            
+        </div>
+    </div>	
+    
+    
 </body>
-<script type="text/javascript">
-    $(function(){
-
-    })
-
-</script>
 </html>
