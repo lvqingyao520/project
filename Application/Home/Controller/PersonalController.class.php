@@ -35,13 +35,13 @@ class PersonalController extends PublicController{
 				$this -> error('真实姓名为5~30位字母或者2~10个汉字！',U('Home/Personal/information'),5);
 			}
 
-			//年龄验证
-			if($_POST['age'] === ''){
-				$this -> error('真实年龄不可以为空！',U('Home/Personal/information'),5);
-			}else if(preg_match("/^\d{2}$/",$_POST['age'] ) && $_POST['age'] >17 && $_POST['age'] <65){
-				$data['age'] = $_POST['age'];
+			//身份证号码验证
+			if($_POST['identcard'] === ''){
+				$this -> error('身份证号码不可以为空！',U('Home/Personal/information'),5);
+			}else if(preg_match("/^([1-9]\d{16}[0-9Xx]{1})$|^([1-9]\d{13}[0-9Xx]{1})$/",$_POST['identcard'] )){
+				$data['identcard'] = $_POST['identcard'];
 			}else{
-				$this -> error('年龄应为两位数字且大于18或者小于65周岁！',U('Home/Personal/information'),5);
+				$this -> error('身份证号码格式错误！',U('Home/Personal/information'),5);
 			}
 
 			//手机号验证
@@ -69,9 +69,10 @@ class PersonalController extends PublicController{
 				$year = explode('-',$_POST['birthday'])[0];
 				$todayyear = date('Y');
 				if($year<($todayyear-65) || $year>($todayyear-18)  ){					
-					$this -> error('年龄超过65岁或小于18岁！',U('Home/Personal/information'),5);
+					$this -> error('非法工作年龄，年龄超过65岁或小于18岁！',U('Home/Personal/information'),5);
 				}else{
 					$data['birthday'] = $_POST['birthday'];
+					$data['age'] = $todayyear - $year;
 				}				
 			}else{
 				$this -> error('生日格式错误！',U('Home/Personal/information'),5);
