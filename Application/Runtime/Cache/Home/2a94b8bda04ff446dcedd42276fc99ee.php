@@ -6,21 +6,21 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	
     <!-- bootstrap -->
-    <link href="/epm/project-master/Public/css/bootstrap/bootstrap.css" rel="stylesheet" />
-    <link href="/epm/project-master/Public/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
-    <link href="/epm/project-master/Public/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/bootstrap/bootstrap.css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/bootstrap/bootstrap-responsive.css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/bootstrap/bootstrap-overrides.css" type="text/css" rel="stylesheet" />
 
     <!-- libraries -->
-    <link href="/epm/project-master/Public/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
-    <link href="/epm/project-master/Public/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
+    <link href="/Git/epm/project/Public/css/lib/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />
+    <link href="/Git/epm/project/Public/css/lib/font-awesome.css" type="text/css" rel="stylesheet" />
 
     <!-- global styles -->
-    <link rel="stylesheet" type="text/css" href="/epm/project-master/Public/css/layout.css" />
-    <link rel="stylesheet" type="text/css" href="/epm/project-master/Public/css/elements.css" />
-    <link rel="stylesheet" type="text/css" href="/epm/project-master/Public/css/icons.css" />
+    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/layout.css" />
+    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/elements.css" />
+    <link rel="stylesheet" type="text/css" href="/Git/epm/project/Public/css/icons.css" />
 
     <!-- this page specific styles -->
-    <link rel="stylesheet" href="/epm/project-master/Public/css/compiled/index.css" type="text/css" media="screen" />    
+    <link rel="stylesheet" href="/Git/epm/project/Public/css/compiled/index.css" type="text/css" media="screen" />    
 
     <!-- open sans font -->
     <!-- <link href='http://fonts.useso.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' /> -->
@@ -41,7 +41,7 @@
                 <span class="icon-bar"></span>
             </button>
             
-            <a class="brand" href="index.html"><img src="/epm/project-master/Public/img/logo.png" /></a>
+            <a class="brand" href="index.html"><img src="/Git/epm/project/Public/img/logo.png" /></a>
             <!-- 网站图标 -->
             <!-- 头部分的右边边 Start-->
             <ul class="nav pull-right">
@@ -408,16 +408,16 @@
 
 
 	<!-- scripts -->
-    <script src="/epm/project-master/Public/js/jquery-latest.js"></script>
-    <script src="/epm/project-master/Public/js/bootstrap.min.js"></script>
-    <script src="/epm/project-master/Public/js/jquery-ui-1.10.2.custom.min.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery-latest.js"></script>
+    <script src="/Git/epm/project/Public/js/bootstrap.min.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery-ui-1.10.2.custom.min.js"></script>
     <!-- knob -->
-    <script src="/epm/project-master/Public/js/jquery.knob.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery.knob.js"></script>
     <!-- flot charts -->
-    <script src="/epm/project-master/Public/js/jquery.flot.js"></script>
-    <script src="/epm/project-master/Public/js/jquery.flot.stack.js"></script>
-    <script src="/epm/project-master/Public/js/jquery.flot.resize.js"></script>
-    <script src="/epm/project-master/Public/js/theme.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery.flot.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery.flot.stack.js"></script>
+    <script src="/Git/epm/project/Public/js/jquery.flot.resize.js"></script>
+    <script src="/Git/epm/project/Public/js/theme.js"></script>
 
    
 </body>
