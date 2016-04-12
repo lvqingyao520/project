@@ -16,9 +16,8 @@ class Page{
     public $parameter; // 分页跳转时要带的参数
     public $totalRows; // 总行数
     public $totalPages; // 分页总页面数
-    public $rollPage   = 11;// 分页栏每页显示的页数
+    public $rollPage   = 2;// 分页栏每页显示的页数
 	public $lastSuffix = true; // 最后一页是否显示总页数
-
     private $p       = 'p'; //分页参数名
     private $url     = ''; //当前链接URL
     private $nowPage = 1;
@@ -29,8 +28,8 @@ class Page{
         'prev'   => '<<',
         'next'   => '>>',
         'first'  => '1...',
-        'last'   => '...%TOTAL_PAGE%',
-        'theme'  => '%FIRST% %UP_PAGE% %LINK_PAGE% %DOWN_PAGE% %END%',
+        'end'   => '...%TOTAL_PAGE%',
+        'theme'  => ' %TIAO% %UP_PAGE% %FIRST%  %LINK_PAGE% %END% %DOWN_PAGE%',
     );
 
     /**
@@ -108,9 +107,16 @@ class Page{
         //最后一页
         $the_end = '';
         if($this->totalPages > $this->rollPage && ($this->nowPage + $now_cool_page) < $this->totalPages){
-            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . $this->config['last'] . '</a>';
+            $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . $this->config['end'] . '</a>';
         }
+        //跳页
 
+        
+        $module_name = U(MODULE_NAME . '/' . CONTROLLER_NAME . '/' . ACTION_NAME);
+        $tiaoye='';
+        if($this->totalPages>1){
+            $tiaoye='<input  type="text" id="z" ><a class="tiaozhuan" href="' . $module_name . '/p/">跳转</a>';
+        }
         //数字连接
         $link_page = "";
         for($i = 1; $i <= $this->rollPage; $i++){
@@ -137,9 +143,9 @@ class Page{
 
         //替换分页内容
         $page_str = str_replace(
-            array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%'),
-            array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages),
+            array('%HEADER%', '%NOW_PAGE%', '%UP_PAGE%', '%DOWN_PAGE%', '%FIRST%', '%LINK_PAGE%', '%END%', '%TOTAL_ROW%', '%TOTAL_PAGE%' ,'%TIAO%'),
+            array($this->config['header'], $this->nowPage, $up_page, $down_page, $the_first, $link_page, $the_end, $this->totalRows, $this->totalPages,$tiaoye),
             $this->config['theme']);
-        return "<div>{$page_str}</div>";
+        return "<div id='total' total=".$this->totalPages.">{$page_str}</div>";
     }
 }
