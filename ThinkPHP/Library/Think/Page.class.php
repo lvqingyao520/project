@@ -16,7 +16,7 @@ class Page{
     public $parameter; // 分页跳转时要带的参数
     public $totalRows; // 总行数
     public $totalPages; // 分页总页面数
-    public $rollPage   = 2;// 分页栏每页显示的页数
+    public $rollPage   = 5;// 分页栏每页显示的页数
 	public $lastSuffix = true; // 最后一页是否显示总页数
     private $p       = 'p'; //分页参数名
     private $url     = ''; //当前链接URL
@@ -25,8 +25,8 @@ class Page{
 	// 分页显示定制
     private $config  = array(
         'header' => '<span class="rows">共 %TOTAL_ROW% 条记录</span>',
-        'prev'   => '<<',
-        'next'   => '>>',
+        'prev'   => '<',
+        'next'   => '>',
         'first'  => '1...',
         'end'   => '...%TOTAL_PAGE%',
         'theme'  => ' %TIAO% %UP_PAGE% %FIRST%  %LINK_PAGE% %END% %DOWN_PAGE%',
@@ -110,12 +110,10 @@ class Page{
             $the_end = '<a class="end" href="' . $this->url($this->totalPages) . '">' . $this->config['end'] . '</a>';
         }
         //跳页
-
-        
-        $module_name = U(MODULE_NAME . '/' . CONTROLLER_NAME . '/' . ACTION_NAME);
+ 
         $tiaoye='';
         if($this->totalPages>1){
-            $tiaoye='<input  type="text" id="z" ><a class="tiaozhuan" href="' . $module_name . '/p/">跳转</a>';
+            $tiaoye='<input  type="text" id="z" ><a class="tiaozhuan" href="' . $this->url(1) . '">' . 跳页 . '</a>';
         }
         //数字连接
         $link_page = "";

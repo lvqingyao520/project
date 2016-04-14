@@ -3,7 +3,7 @@
 namespace Home\Controller;
 use Think\Controller;
 
-class PersonalController extends PublicController{
+class PersonalController extends BaseController{
 
 	//个人设置模块主页
 	public function index(){

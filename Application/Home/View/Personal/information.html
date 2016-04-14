@@ -197,6 +197,13 @@
 			    
 		});
 
+		
+		document.getElementById("tname").addEventListener('input',function(){
+		var tname = $(this).val();
+		$('#afortname').html(tname);
+		});
+		
+
 		$("#identcard").on("blur",function(){
 			    var identcard = $(this).val();
 			   	var $this = $(this);

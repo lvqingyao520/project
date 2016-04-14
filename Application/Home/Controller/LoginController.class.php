@@ -57,6 +57,12 @@ class LoginController extends Controller{
 				if($userdata){
 					$_SESSION['home']['uid'] = $userdata['id'];
 					$_SESSION['home']['username'] = $userdata['username'];
+
+					//更新用户表最后一次登录时间
+					$lastlogintime = date('Y-m-d H:i:s');
+					$pdu-> where(array('id' => $userdata['id']))
+						-> save(array('lastlogintime' => $lastlogintime));
+					
 					$this -> success("欢迎登陆智能项目管理系统",U('Home/index/index'));
 				}else{
 					$this -> error('请输入正确的账号及密码',U('Home/Login/index'));

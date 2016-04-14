@@ -3,6 +3,7 @@ namespace Home\Controller;
 use Think\Controller;
 class BsPartController extends Controller {
     public function partya(){
+        C('URL_HTML_SUFFIX','');
     	$partya=M('baseset_partya');
         if(!empty($_GET['keyword'])){
             $where["aname"]=array('like','%'.$_GET['keyword'].'%');

@@ -379,7 +379,7 @@
             </li> 
 
 
-            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq 'Msgsystem')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
@@ -391,10 +391,10 @@
                     <span>消息中心</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu">
-                    <li><a href="#">代办文件</a></li>
-                    <li><a href="#">已办文件</a></li>
-                    <li><a href="#">通知</a></li>
+                <ul class="submenu" <if condition="($Think.const.CONTROLLER_NAME eq 'Msgsystem') " >style="display:block;" <else />style="display:none;" </if> >
+                    <li><a href="{:U('Home/Msgsystem/msgWait')}">代办文件</a></li>
+                    <li><a href="{:U('Home/Msgsystem/msgDeal')}">已办文件</a></li>
+                    <li><a href="{:U('Home/Msgsystem/notice')}">通知</a></li>
                 </ul>
             </li>  
 
