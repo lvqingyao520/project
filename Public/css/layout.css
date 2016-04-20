@@ -95,6 +95,19 @@ input.search{
 	text-align: center;
 	font-size: 11px;
 }
+.countor {
+	position: absolute;
+	top: 10px;
+	left: 38%;
+	background: rgb(255, 100, 100);
+	padding: 0px 5px;
+	border-radius: 30px;
+	color: #fff;
+	line-height: 16px;
+	z-index: 9999;
+	text-align: center;
+	font-size: 11px;
+}
 
 /* navbar popup dialog */
 .navbar-inverse .pop-dialog {

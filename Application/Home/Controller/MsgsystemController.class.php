@@ -7,19 +7,23 @@ class MsgsystemController extends BaseController{
 
 	//默认index
 	public function index(){
-		$this -> msgWait();
+		$this -> display(msgWait);
 	}
 
 	//代办消息
 	public function msgWait(){
-		// C('URL_HTML_SUFFIX','');
+		
 		//提取数据
+		$tb_user = M("personal_users");
 		$tb_msg = M("msgsystem_message");
+		$uid = $uid = $_SESSION['home']['uid'];
 		$sort = $_GET['status'] == 2?'asc':"desc";
+
 		if(!empty($_GET['keyword'])){
             $where["title|process"]=array('like','%'.$_GET['keyword'].'%');
         }
         $where['status'] = 2;
+        $where['receiver_id'] = $uid;
 		$count  =$tb_msg->where($where)
 						->count();// 查询满足要求的总记录数
 		
@@ -29,7 +33,7 @@ class MsgsystemController extends BaseController{
 						-> order('ctime '.$sort)
 						-> limit($Page->firstRow.','.$Page->listRows)
 						-> select();
-		// var_dump($show);
+
 		$this -> assign('list',$list);
 		$this -> assign('page',$show);
 		$this -> display();
@@ -37,15 +41,18 @@ class MsgsystemController extends BaseController{
 
 	//已办消息
 	public function msgDeal(){
-		C('TMPL_CACHE_TIME',1);
+		
 		//提取数据
+		$tb_user = M("personal_users");
 		$tb_msg = M("msgsystem_message");
+		$uid = $uid = $_SESSION['home']['uid'];
 		$sort = $_GET['status'] == 2?'asc':"desc";
 		
 		if(!empty($_GET['keyword'])){
             $where["title|process"]=array('like','%'.$_GET['keyword'].'%');
         }
         $where['status'] = 1;
+        $where['receiver_id'] = $uid;
 		$count  =$tb_msg->where($where)
 						->count();// 查询满足要求的总记录数
 		
@@ -55,7 +62,7 @@ class MsgsystemController extends BaseController{
 						-> order('ctime '.$sort)
 						-> limit($Page->firstRow.','.$Page->listRows)
 						-> select();
-		// var_dump($show);
+
 		$this -> assign('list',$list);
 		$this -> assign('page',$show);
 		$this -> display();
@@ -63,6 +70,29 @@ class MsgsystemController extends BaseController{
 
 	//通知
 	public function notice(){
+		//提取数据
+		$tb_user = M("personal_users");
+		$tb_msg = M("msgsystem_message");
+		$uid = $uid = $_SESSION['home']['uid'];
+		$sort = $_GET['status'] == 2?'asc':"desc";
+		
+		if(!empty($_GET['keyword'])){
+            $where["title|process"]=array('like','%'.$_GET['keyword'].'%');
+        }
+        $where['status'] = 3;
+        $where['receiver_id'] = $uid;
+		$count  =$tb_msg->where($where)
+						->count();// 查询满足要求的总记录数
+		
+		$Page = new \Think\Page($count,8);
+        $show = $Page -> show();
+		$list = $tb_msg -> where($where)
+						-> order('ctime '.$sort)
+						-> limit($Page->firstRow.','.$Page->listRows)
+						-> select();
+		
+		$this -> assign('list',$list);
+		$this -> assign('page',$show);
 		$this -> display();
 	}
 
@@ -73,8 +103,10 @@ class MsgsystemController extends BaseController{
 			//提取并检验id合法性
 			$id = I('get.id','-1','int');
 
+			$tb_user = M("personal_users");
 			$tb_msg = M("msgsystem_message");
-			$gen = $tb_msg 	-> where(array('id'=>$id))
+			$uid = $_SESSION['home']['uid'];
+			$gen = $tb_msg 	-> where(array('id'=>$id,'receiver_id'=>$uid))
 							-> delete();
 
 			if($gen){
@@ -90,13 +122,15 @@ class MsgsystemController extends BaseController{
 	//批量删除
 	public function deal(){
 		if(IS_AJAX){
+			$tb_user = M("personal_users");
+			$uid = $_SESSION['home']['uid'];
 			$model = M('msgsystem_message');
 			$ids = $_POST['ids'];
 			$gens = null;
 			foreach ($ids as $id) {
 				if(is_numeric($id)){
-					$gens = $model -> where(array('id'=>$id))
-										-> delete();
+					$gens = $model 	-> where(array('id'=>$id,'receiver_id'=>$uid))
+									-> delete();
 				}	
 			}
 			if($gens){
@@ -108,7 +142,4 @@ class MsgsystemController extends BaseController{
 	}
 
 	//查看
-	public function view(){
-
-	}
 }

@@ -3,6 +3,11 @@
 <block name="maincontent" >
 <!-- this page specific styles -->
 <link rel="stylesheet" href="__PUBLIC__/css/compiled/index.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/validation/layer/skin/layer.css" />
+
+<!-- js -->
+<script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/validation/layer/layer.js"></script>
 <script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
 <style type="text/css">
 	a[class="espaction"]:hover{
@@ -65,9 +70,11 @@
                     <div class="row-fluid table-responsive">
                         <table class="table table-hover">
                             <thead>
+                            </thead>
+                            <tbody>
                                 <tr>
-                                    <th>
-                                        <input type="checkbox" style="width:18px;height:18px;" />                                    
+                                    <th style='width:80px;'>
+                                        <input type="checkbox" style="width:18px;height:18px;" /> 全选                                  
                                     </th>
                                     <th>
                                         <span class="line"></span>序号
@@ -91,8 +98,6 @@
                                         <span class="line"></span>操作
                                     </th>
                                 </tr>
-                            </thead>
-                            <tbody>
                                 <!-- row -->
                                 <volist name="list" id="vo" key="k" >
                                 <tr {$k == '0'?'class="first"':''}>
@@ -103,7 +108,7 @@
                                         {$vo.id}
                                     </td>                            
                                     <td>
-                                        <a href= '{:U('Home/Msgsystem/view?id='.$vo[oid])}' class="espaction" style="text-decoration:none;" >{$vo.title}</a>
+                                        <a href= '{$vo.ohref}' class="espaction" style="text-decoration:none;" >{$vo.title}</a>
                                     </td>
                                     <td>
                                         {$vo.price}
@@ -120,7 +125,7 @@
                                     <td>
                                         <div class="btn-toolbar">
                                         <div class="btn-group">
-                                          <a  class="btn" href="{:U('Home/Msgsystem/view?id='.$vo[oid])} " title="查看" alt="查看" style="text-decoration: none;"><i class="icon-search"></i></a> 
+                                          <a  class="btn" href="{$vo.ohref} " title="查看" alt="查看" style="text-decoration: none;"><i class="icon-search"></i></a> 
                                           <a class="btn" href="{:U('Home/Msgsystem/del?id='.$vo[id])}" title="删除" alt="删除" style="text-decoration: none;"><i class="icon-remove"></i></a>
                                         </div>
                                       </div>
@@ -132,15 +137,17 @@
                                     <input type="checkbox" style="width:18px;height:18px;" />全选                          
                                 </th>
                             </tbody>
+
                         </table>
-                    </div>
-                    <div class="pull-left">
+                         <div class="pull-left">
                         <!--   <a class="btn-flat success new-product" href="{:U('Home/BsPart/addpartya')}">全选</a> -->
                           <a class="btn-flat success new-product " href="javascript:void(0);" onclick="delAll()">批量删除</a>
+                        </div>
+                        <div id="page" class="pagination pull-right">
+                            {$page}
+                        </div>
                     </div>
-                    <div id="page" class="pagination pull-right">
-                        {$page}
-                    </div>
+                   
 
 
           					<style type='text/css'>
@@ -215,22 +222,27 @@
                 j++;
             }
         }
-        if(window.confirm('真的要删除吗？')){
-            $.ajax({
-                url:"{:U('Home/Msgsystem/deal')}",
-                data:{'ids':chk},
-                dataType:'json',
-                type:"POST",
-                success:function(data){
-                    if(data == '1'){
-                        window.location.href = '{:U("Home/Msgsystem/msgDeal")}';
-                        // window.location.reload();
-                    }else{
-                        alert('删除失败！');
-                    }
-                }
-            });
-        }
+        layer.confirm(  '真的要删除吗？', 
+                        {icon: 5, title:'批量删除'},
+                        function(index){ 
+                            $.ajax({
+                                url:"{:U('Home/Msgsystem/deal')}",
+                                data:{'ids':chk},
+                                dataType:'json',
+                                type:"POST",
+                                success:function(data){
+                                    if(data == '1'){
+                                        layer.close(index);
+                                        layer.msg("删除成功!");
+                                        setTimeout((function(){window.location.href = '{:U("Home/Msgsystem/msgDeal")}';})(),2000);
+                                        // window.location.reload();
+                                    }else{
+                                        layer.close(index);
+                                        layer.msg("您还没有选择，删除失败！");
+                                    }
+                                }
+                            });
+                        });
     }
 </script>
 <!-- scripts -->

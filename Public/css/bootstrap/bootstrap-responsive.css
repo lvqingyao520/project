@@ -113,6 +113,9 @@
   .table-responsive > .table > tbody > tr > td {
     white-space: nowrap;  /* 确保单元格中的文本不会换行，直到遇到 <br> 标签为止*/
   }
+  .table-responsive > .table > tbody > tr > th {
+    white-space: nowrap;  /* 确保单元格中的文本不会换行，直到遇到 <br> 标签为止*/
+  }
   .table-responsive > .table-bordered {    border: 0;  }
 
 

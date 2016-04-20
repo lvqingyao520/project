@@ -1,0 +1,9 @@
+需要下载三个文件到本地
+
+1.http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js
+
+2.https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js
+
+3.https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css
+
+该插件是基于该三文件实现的

@@ -3,8 +3,12 @@
 <block name="maincontent" >
 <!-- this page specific styles -->
 <link rel="stylesheet" href="__PUBLIC__/css/compiled/index.css" type="text/css" media="screen" />
-<script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/validation/layer/skin/layer.css" />
 
+<!-- js -->
+<script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/validation/layer/layer.js"></script>
+<script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
 <style type="text/css">
 	a[class="espaction"]:hover{
 		color:blue;
@@ -64,9 +68,11 @@
                     <div class="row-fluid table-responsive">
                         <table class="table table-hover">
                             <thead>
+                            </thead>
+                            <tbody>
                                 <tr>
-                                    <th>
-                                        <input type="checkbox" style="width:18px;height:18px;" />                                    
+                                    <th style='width:80px;'>
+                                        <input type="checkbox" style="width:18px;height:18px;" /> 全选                                  
                                     </th>
                                     <th>
                                         <span class="line"></span>序号
@@ -90,20 +96,17 @@
                                         <span class="line"></span>操作
                                     </th>
                                 </tr>
-                            </thead>
-                            <tbody>
-                            
                                 <!-- row -->
                                 <volist name="list" id="vo" key="k" >
                                 <tr {$k == '0'?'class="first"':''}>
                                     <td>
-                                        <input type="checkbox" name="chks[]" style="width:18px;height:18px;margin-top:-5px;" />                                     
+                                        <input type="checkbox" name="chks[]"  value="{$vo.id}" style="width:18px;height:18px;margin-top:-5px;" />                                     
                                     </td>
                                     <td>
                                         {$vo.id}
                                     </td>                            
                                     <td>
-                                        <a href= '{:U('Home/Msgsystem/view?id='.$vo[oid])}' class="espaction" style="text-decoration:none;" >{$vo.title}</a>
+                                        <a href= '{$vo.ohref}' class="espaction" style="text-decoration:none;" >{$vo.title}</a>
                                     </td>
                                     <td>
                                         {$vo.price}
@@ -120,7 +123,7 @@
                                     <td>
                                         <div class="btn-toolbar">
                                         <div class="btn-group">
-                                          <a  class="btn" href="{}" title="查看" alt="查看" style="text-decoration: none;"><i class="icon-search"></i></a> 
+                                          <a  class="btn" href="{$vo.ohref}" title="查看" alt="查看" style="text-decoration: none;"><i class="icon-search"></i></a> 
                                           <a class="btn" href="{:U('Home/Msgsystem/del?id='.$vo[id])}" title="删除" alt="删除" style="text-decoration: none;"><i class="icon-remove"></i></a>
                                         </div>
                                       </div>
@@ -169,30 +172,38 @@
 
 					</style>
 					<script type="text/javascript">
-						$(function(){
-                            $('#z').blur(function(){    
-						 
+                            
+                        $(function(){
+                            
+                            $('#z').blur(function(){
                                 var url=$('.tiaozhuan').attr("href");
-
-                                var strs=url.substr(0,400);
-
-
-                                var value=this.value;
-
+                                var url = url.replace(/\.html/,'');
+                                var gen  = /\/p\//.test(url);
+                                var strs = null;
+                                if(gen){
+                                    strs = url.replace(/(\/p\/\d{1,})|(\/p\/)/,'');
+                                }else{
+                                    strs = url;
+                                }                          
+                                var value=this.value;                       
                                 var all=$('#total').attr("total");
                                 var i=parseFloat(all);//将字符转化成数字
 
                                 if(value<=i && !isNaN(value) && value>0){
-                                	value=Math.ceil(value);
+                                    value=Math.ceil(value);
+                                }else if(value > i){
+                                    value = i;
                                 }else{
-                                	value='';
+                                    value = 1;
                                 }
-                                var newurl=strs+value+'.html';
-                                 
+                                var newurl=strs+'/p/'+value+'.html';
+
                                 $('.tiaozhuan').attr("href",newurl);
-                            });
-						});
-					</script>
+                            })
+
+                        });
+
+                    </script>
                 </div>
 <script type="text/javascript">
     function delAll(){
@@ -204,21 +215,27 @@
                 j++;
             }
         }
-        if(window.confirm('真的要删除吗？')){
-            $.ajax({
-                url:"{:U('Home/Msgsystem/deal')}",
-                data:{'ids':chk},
-                dataType:'json',
-                type:"POST",
-                success:function(data){
-                    if(data == '1'){
-                        window.location.href = '{:U("Home/Msgsystem/msgWait")}';
-                    }else{
-                        alert('删除失败！');
-                    }
-                }
-            });
-        }
+        layer.confirm(  '真的要删除吗？', 
+                        {icon: 5, title:'批量删除'},
+                        function(index){ 
+                            $.ajax({
+                                url:"{:U('Home/Msgsystem/deal')}",
+                                data:{'ids':chk},
+                                dataType:'json',
+                                type:"POST",
+                                success:function(data){
+                                    if(data == '1'){
+                                        layer.close(index);
+                                        layer.msg("删除成功!");
+                                        setTimeout((function(){window.location.href = '{:U("Home/Msgsystem/msgWait")}';})(),2000);
+                                        // window.location.reload();
+                                    }else{
+                                        layer.close(index);
+                                        layer.msg("删除失败！");
+                                    }
+                                }
+                            });
+                        });
     }
 </script>
 

@@ -29,7 +29,7 @@ class LoginController extends Controller{
 
 	//注销登陆状态
 	public function logout(){
-		$_SESSION = null;
+		$_SESSION['home'] = null;
 		$this -> redirect('Home/Login/index');
 	}
 

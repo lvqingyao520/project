@@ -1,0 +1,163 @@
+<extend name="Public/index" />
+
+<block name="maincontent">
+<!-- this page specific styles -->
+<link rel="stylesheet" href="__PUBLIC__/css/compiled/index.css" type="text/css" media="screen" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/validation/layer/skin/layer.css" />
+<link rel="stylesheet" href="__PUBLIC__/kindeditor/themes/default/default.css" />
+<link href="__PUBLIC__/bootstrap-fileinput-master/css/bootstrap.css" rel="stylesheet">
+<link href="__PUBLIC__/bootstrap-fileinput-master/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/lib/select2.css" type="text/css" rel="stylesheet">		
+<!-- js -->
+<script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/validation/layer/layer.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/kindeditor.js"></script>
+<script charset="utf-8" src="__PUBLIC__/kindeditor/lang/zh_CN.js"></script>
+
+
+
+<script src="__PUBLIC__/bootstrap-fileinput-master/js/jquery.min.js"></script>
+<script src="__PUBLIC__/bootstrap-fileinput-master/js/fileinput2.js" type="text/javascript"></script>
+<!-- 法语 可不加载 -->
+<!--<script src="../js/fileinput_locale_fr.js" type="text/javascript"></script>-->
+<!-- 英语 加载 -->
+<!--  <script src="../js/fileinput_locale_es.js" type="text/javascript"></script> -->
+<script src="__PUBLIC__/bootstrap-fileinput-master/js/fileinput_locale_zh.js" type="text/javascript"></script>
+<script src="__PUBLIC__/bootstrap-fileinput-master/js/bootstrap.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/select2.min.js"></script>
+
+<div class="table-products section" style="margin-top:22px;padding-top:5px">
+    <div class="row-fluid head" style='margin-bottom:0px;padding-bottom:0px'>
+        <div class="span12">
+            <h4><i class="icon-plus"></i>&nbsp;&nbsp;&nbsp;&nbsp;<big>新建传阅</big></h4>
+        </div>
+    </div>
+    <form action="{:U('Home/Filepass/newFile')}" method="post" enctype="Multipart/form-data">
+    <div class="row-fluid table-responsive">
+        <table class="table table-hover">
+            <thead>
+            </thead>
+            <tbody>
+                <tr>
+                    <th style='width:120px;text-align:center;'>
+                       标题                                
+                    </th>
+                    <th>
+                    	<span class="line"></span>  
+                    </th>
+                    <th>
+                        <div class="field-box">
+                                <input class="span4 " name="title" value="" required placeholder="" type="text" />
+                        </div>
+                    </th>
+                </tr>
+				<tr>
+                    <th style='width:120px;text-align:center;'>
+                       	接收人员                                
+                    </th>
+                    <th>
+                    	<span class="line"></span>  
+                    </th>
+                    <th>
+                        <div class="field-box">
+                                <select style="width:300px;heigth:20px;"  multiple name="users[]"  class="select2">
+                                    <option />
+                                    <volist name="users" id="vo" >
+                                    <option value="{$vo.id}" />{$vo.truename}
+                                    </volist>                
+                                </select>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th style='width:120px;text-align:center;'>
+                       	共享传阅意见                                
+                    </th>
+                    <th>
+                    	<span class="line"></span>  
+                    </th>
+                    <th>
+                        <div class="field-box">
+                            <label style="display:inline-block;width:90px;"><input style="width:20px;height:20px;" checked name="share" value="2" type="radio" /> 是</label>  
+                            <label style="display:inline-block;width:90px;"><input style="width:20px;height:20px;" name="share" value="1" type="radio" /> 否</label>
+                        </div>
+                    </th>
+                </tr>
+                <tr>
+                    <th style='width:120px;text-align:center;'>
+                       	附件                                
+                    </th>
+                    <th>
+                    	<span class="line"></span>  
+                    </th>
+                    <td class="">
+                        <div class="form-group span4">
+		                    <input id="" class="file" type="file" multiple name="files[]" data-preview-file-type="any" >
+		                </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th style='width:120px;text-align:center;'>
+                       	传阅内容                                
+                    </th>
+                    <th>
+                    	<span class="line"></span>  
+                    </th>
+                    <th>
+                        <div class="row-fluid">
+        					<table class="table table-hover">
+        					<tr>
+        					<td>
+                            <textarea name="content" style=""></textarea>
+                            </td>
+                            </tr>
+                            </table>
+                        </div>
+                    </th>
+                </tr>
+			</tbody>
+			<tfoot>                 
+			</tfoot>
+		</table>
+        <div class="row-fluid">
+            <input class="btn-flat success" type="submit" id="btnSubmit" value="提交" style="width:100px;margin:20px 0px 20px 150px;text-decoration:none;" />
+            <input class="btn-flat success" type="reset" value="取消" style="width:100px;margin:20px 0px 20px 150px;text-decoration:none;" />
+        </div>
+	</div>
+
+    </form>
+</div>
+<script>
+	var editor;
+	KindEditor.ready(function(K) {
+		editor = K.create('textarea[name="content"]', {
+			resizeType : 2,
+			allowPreviewEmoticons : true,
+			width:"500px",
+			height:300,
+			allowUpload:false,
+			allowImageUpload : true,
+			items : [
+				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+				'insertunorderedlist', '|', 'emoticons']
+		});
+	});
+</script>
+
+<!-- scripts -->
+<!-- <script src="__PUBLIC__/js/jquery-latest.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script> -->
+<script src="__PUBLIC__/js/theme.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        // select2 plugin for select elements
+        $(".select2").select2({
+            placeholder: ""
+        });
+
+    });
+</script>
+
+</block>
