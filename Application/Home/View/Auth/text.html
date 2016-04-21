@@ -1,0 +1,41 @@
+<extend name="Public/index"/>
+<block name='maincontent'>
+    <link href="__PUBLIC__/css/lib/select2.css" type="text/css" rel="stylesheet" />
+   
+    <div class="span4">
+                        <form />
+                         
+                            <div class="field-box">
+                                <label>Select2 multiselect:</label>
+                                <select style="width:250px" multiple="" class="select2">
+                                    <option />
+                                    <option value="AK" />Alaska
+                                    <option value="HI" selected="" />Hawaii
+                                    <option value="CA" />California
+                                    <option value="NV" />Nevada
+                                    <option value="OR" />Oregon
+                                    <option value="WA" />Washington
+                                    <option value="AZ" />Arizona
+                                  
+                                </select>
+                            </div>
+                            
+                        </form>
+                    </div>
+    <script src="__PUBLIC__/js/jquery-latest.js"></script>
+    <script src="__PUBLIC__/js/select2.min.js"></script>
+    <script src="__PUBLIC__/js/theme.js"></script>
+
+    <!-- call this page plugins -->
+    <script type="text/javascript">
+        $(function () {
+
+            // select2 plugin for select elements
+            $(".select2").select2({
+                placeholder: "Select a State"
+            });
+ 
+        });
+    </script>
+     
+</block>

@@ -33,8 +33,8 @@
                                   <option value="2" {$_GET['status']=='2'?"selected":""} />禁用
                                 </select>
                             </div> -->
-                          	<div class="btn-group">
-                                <button class="btn glow">状态</button>
+                          	<div class="btn-group" >
+                                <button class="btn glow"  data-toggle="dropdown">状态</button>
                                 <button class="btn glow dropdown-toggle" data-toggle="dropdown">
                                     <span class="caret"></span>
                                 </button>
@@ -45,10 +45,11 @@
                                 </ul>
                             </div>
                             <div class="input-append" >
-						        <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
-						        <button type="submit" class="btn">搜</button>
-						        
-						    </div>
+            						        <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
+                                <input type="hidden" name="status" value="{$_GET['status']}" >
+            						        <button type="submit" class="btn">搜</button>
+            						        
+						                </div>
                           </form>
 
                             
@@ -115,10 +116,14 @@
                                       </div>
                                     </td>
                                     <td>
-                                        <a href="{:U('Home/BsPart/updatepartyb/id/'.$pa[id])}"><button class="btn btn-min" type="button"><i class="icon-pencil"></i></button></a>
-                                        <a href="{:U('Home/BsPart/delpartyb/id/'.$pa[id])}"><button class="btn btn-min" type="button"><i class="icon-remove"></i></button></a>
-                                        
                                        
+                                       <div class="btn-toolbar">
+                                        <div class="btn-group">
+                                          <a  class="btn" href="{:U('Home/BsPart/updatepartyb/id/'.$pa[id])} "  style="text-decoration: none;"><i class="icon-pencil"></i></a>
+                                          
+                                          <a class="btn" href="{:U('Home/BsPart/delpartyb/id/'.$pa[id])}" style="text-decoration: none;"><i class="icon-remove"></i></a>
+                                        </div>
+                                      </div>
                                         
                                       
 
@@ -160,36 +165,40 @@
                                 float:left;
                                 width:30px;
                                 height:12.5px;
+                                line-height: 1.42857;
                               }
 
                           </style>
                            <script type="text/javascript">
                             
-                          $(function(){
+                         $(function(){
                             
-                              $('#z').blur(function(){
-                             
-                              var url=$('.tiaozhuan').attr("href");
-                              
-                              var strs=url.substr(0,400);
+                            $('#z').blur(function(){
+                                var url=$('.tiaozhuan').attr("href");
+                                var url = url.replace(/\.html/,'');
+                                var gen  = /\/p\//.test(url);
+                                var strs = null;
+                                if(gen){
+                                  strs = url.replace(/(\/p\/\d{1,})|(\/p\/)/,'');
+                                }else{
+                                  strs = url;
+                                }                          
+                                var value=this.value;                       
+                                var all=$('#total').attr("total");
+                                var i=parseFloat(all);//将字符转化成数字
 
-                              
-                              var value=this.value;
-                              
-                              var all=$('#total').attr("total");
-                              var i=parseFloat(all);//将字符转化成数字
+                                if(value<=i && !isNaN(value) && value>0){
+                                    value=Math.ceil(value);
+                                }else if(value > i){
+                                    value = i;
+                                }else{
+                                    value = 1;
+                                }
+                                var newurl=strs+'/p/'+value+'.html';
+                                $('.tiaozhuan').attr("href",newurl);
+                            })
 
-                              if(value<=i && !isNaN(value) && value>0){
-                              value=Math.ceil(value);
-                              }else{
-                              value='';
-                              }
-                              var newurl=strs+value;
-                              $('.tiaozhuan').attr("href",newurl);
-                              })
-
-                            });
-
+                        });
 
 
                         </script>

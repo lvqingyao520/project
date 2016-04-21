@@ -1,0 +1,140 @@
+<extend name="Public/index"/>
+<block name='maincontent'>
+	<!-- this page specific styles -->
+  
+        <link rel="stylesheet" href="__PUBLIC__/docs/css/bootstrap-3.3.2.min.css" type="text/css">
+        <link rel="stylesheet" href="__PUBLIC__/docs/css/bootstrap-example.css" type="text/css">
+        <link rel="stylesheet" href="__PUBLIC__/docs/css/prettify.css" type="text/css">
+
+        <script type="text/javascript" src="__PUBLIC__/docs/js/jquery-2.1.3.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/docs/js/bootstrap-3.3.2.min.js"></script>
+        <script type="text/javascript" src="__PUBLIC__/docs/js/prettify.js"></script>
+
+        <link rel="stylesheet" href="__PUBLIC__/dist/css/bootstrap-multiselect.css" type="text/css">
+        <script type="text/javascript" src="__PUBLIC__/dist/js/bootstrap-multiselect.js"></script>
+
+
+    <!-- js -->
+    <div id="pad-wrapper" class="form-page">
+                <div class="row-fluid form-wrapper">
+                    <!-- left column -->
+                    <div class="span8 column">
+                        <div class="alert alert-info">
+                        <i class="icon-lightbulb"></i>
+                        请为员工添加角色：）
+                        <br><h3>添加角色信息：</h3>
+                    </div>
+                    <h6 class="personal-title"></h6>
+                        <form action="__ACTION__" method="post">
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div> 
+                            <div class="field-box">
+                                <label><h4>账号:&nbsp;&nbsp;&nbsp;</h4></label>
+                               <label><h4>&nbsp;&nbsp;&nbsp;{$rule.username}</h4></label>
+                            </div>  
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div>
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div>
+                            <div class="field-box">
+                                <label><h4>真实姓名:&nbsp;&nbsp;&nbsp;</h4></label>
+                                <label><h4>{$rule.truename}</h4></label>
+                            </div> 
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div>
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div>
+                            <div class="field-box">
+                                <label><h4>分配角色:&nbsp;&nbsp;&nbsp;</h4></label>
+                                <script type="text/javascript">
+                                    $(document).ready(function() {
+                                        $('#example-selectAllJustVisible').multiselect({
+                                            enableFiltering: true,
+                                            maxHeight: 320,
+                                            buttonWidth: '320px',
+                                            includeSelectAllOption: true,
+                                            selectAllJustVisible: false,
+                                            nonSelectedText: '选择项',
+                                            allSelectedText: '全选',
+                                            numberDisplayed: 4,
+                                            nSelectedText:'项被选择',
+                                            delimiterText:'~' ,
+                                            selectAllText: '选择全部!'
+                                        });
+                                    });
+                                </script>
+
+                                        <select id="example-selectAllJustVisible" name="rule[]" multiple="multiple">
+                                                <foreach name='roles' item="ro">
+                                                    <option  value="{$ro.id}" <if condition="in_array($ro['rolename'],$ro['arr'])">selected<else /></if>>{$ro.rolename}</option>
+
+                                                </foreach>
+                                                
+                                                
+                                            
+                                        </select>
+                                        <input type="hidden" name="id" value="{$rule.id}"
+                            </div>
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div>
+                            <div class="field-box">
+                                <label></label>
+                                
+                            </div>
+                            <div class="field-box">
+                                <label><h4>是否根据所选角色来快速分配权利:&nbsp;&nbsp;&nbsp;</h4></label>
+                                <br>
+                                <label><h4><input name="ss" value="1" type="radio">是</h4></label>
+                                <label><h4><input name="ss" value="2" type="radio">否</h4></label>
+                            </div> 
+                            <div class="field-box" style="height:200px">
+                                <label></label>
+                         
+                            </div> 
+                           
+                                                      
+                          
+                            <div class="field-box">
+                              
+                                <table>
+                                  <tr>
+                                    <td width="50px">&nbsp;</td>
+                                    <td>
+                                      <button type="submit" class="btn-flat default">添加</button>
+                                    </td>
+                                    <td>
+                                      <button type="reset" class="btn-flat danger">重置</button>
+                                    </td>
+                                    <td width="100px">
+                                      &nbsp;
+                                    </td>
+                                  </tr>
+                                </table>
+                           
+                            </div>
+                        </form>
+                    </div>
+
+               
+                </div>
+    </div>
+     
+     
+   
+    <script src="__PUBLIC__/js/theme.js"></script>
+ 
+   
+
+</block>

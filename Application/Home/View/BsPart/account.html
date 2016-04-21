@@ -12,13 +12,13 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4><b>甲方设置</b></h4>
+                            <h4><b>账户设置</b></h4>
                         </div>
                     </div>
 
                     <div class="row-fluid filter-block">
                         <div class="pull-left">
-                          <a class="btn-flat success new-product" href="{:U('Home/BsPart/addpartya')}">添加</a>
+                          <a class="btn-flat success new-product" href="{:U('Home/BsPart/addaccount')}">添加</a>
                         </div>
                       
                         <div class="pull-right">
@@ -45,8 +45,8 @@
                                 </ul>
                             </div>
                             <div class="input-append" >
-            						        <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
-                                <input type="hidden" name="status" value="{$_GET['status']}" >
+                                <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
+            						        <input type="hidden" name="status" value="{$_GET['status']}" >
             						        <button type="submit" class="btn">搜</button>
             						        
             						    </div>
@@ -80,6 +80,9 @@
                                         <span class="line"></span>开户账号
                                     </th>
                                     <th>
+                                        <span class="line"></span>起始资金
+                                    </th>
+                                    <th>
                                         <span class="line"></span>状态
                                     </th>
                                     <th>
@@ -89,7 +92,7 @@
                             </thead>
                             <tbody>
                                 <!-- row -->
-                                <foreach name="partya" item="pa">
+                                <foreach name="account" item="pa">
                                 <tr>
                                     <td>
                                         {$pa.id}
@@ -109,6 +112,11 @@
                                     <td>
                                         {$pa.account}
                                     </td>
+                                    <td class="onset">
+                                        {$pa.onset|number_format}
+                                        
+                                        
+                                    </td>
                                     <td>
                                         
                                         <div  class="slider-frame <if condition='$pa.status eq 1 '>info<else /></if>">
@@ -116,7 +124,7 @@
                                       </div>
                                     </td>
                                     <td>
-                                      
+
                                       
                                         
                                        <!-- 
@@ -127,9 +135,9 @@
                                         </ul> -->
                                       <div class="btn-toolbar">
                                         <div class="btn-group">
-                                          <a  class="btn" href="{:U('Home/BsPart/updatepartya/id/'.$pa[id])} "  style="text-decoration: none;"><i class="icon-pencil"></i></a>
+                                          <a  class="btn" href="{:U('Home/BsPart/updateaccount/id/'.$pa[id])} "  style="text-decoration: none;"><i class="icon-pencil"></i></a>
                                           
-                                          <a class="btn" href="{:U('Home/BsPart/delpartya/id/'.$pa[id])}" style="text-decoration: none;"><i class="icon-remove"></i></a>
+                                          <a class="btn" href="{:U('Home/BsPart/delaccount/id/'.$pa[id])}" style="text-decoration: none;"><i class="icon-remove"></i></a>
                                         </div>
                                       </div>
 
@@ -137,11 +145,25 @@
                                    
                                 </tr>
                                 </foreach>
+                                <script type="text/javascript">  
+                                   
+                                   
+                                   
+
+
+
+
+
+                                    </script>
+                                    <!-- <input name="" type="text"  onblur="alert(bbb(this.value))"/> -->
+                                      
                                 <!-- row -->
                               
                             </tbody>
                         </table>
-                   
+                        <script type="text/javascript">
+                      
+                        </script>
                            
                       
                        
@@ -149,7 +171,7 @@
                           {$page}
                         </div>
 
-                            <style type='text/css'>
+                          <style type='text/css'>
                               #page a,#page span{
                                   background-color: #fff;
                                   border: 1px solid #ddd;
@@ -231,7 +253,7 @@
                     $(this).parent(".slider-frame").removeClass('info');
                     var sid=$(this).attr('sid');
                     $.ajax({ 
-                        url: "{:U('Home/BsPart/status')}",
+                        url: "{:U('Home/BsPart/statusa')}",
                         type:'POST',
                         dataType:'json',
                         data:{'status':2,'id':sid},
@@ -245,7 +267,7 @@
                     $(this).parent(".slider-frame").addClass('info');
                     var sid=$(this).attr('sid');
                     $.ajax({ 
-                        url: "{:U('Home/BsPart/status')}",
+                        url: "{:U('Home/BsPart/statusa')}",
                         type:'POST',
                         dataType:'json',
                         data:{'status':1,'id':sid},

@@ -23,22 +23,22 @@
                         <div class="span8 column">
                             <div class="alert alert-info">
                             <i class="icon-lightbulb"></i>
-                            请修改乙方信息：）
-                            <br><h3>乙方信息资料：</h3>
+                            请修改施工队信息：）
+                            <br><h3>施工队信息资料：</h3>
                         </div>
                          <form action="__ACTION__" method="post">
                             
                             <div class="field-box">
-                                <label>乙方名称*</label>
-                                <input class="span8 inline-input" type="text" name="bname"  value="{$partyb.bname}" required/>
+                                <label>施工队名称*</label>
+                                <input class="span8 inline-input" type="text" name="cname"  value="{$constract.cname}" required/>
                             </div> 
                             <div class="field-box">
                                 <label>开户银行*</label>
-                                <input class="span8 inline-input" type="text" name="bank" value="{$partyb.bank}" required/>
+                                <input class="span8 inline-input" type="text" name="bank" value="{$constract.bank}" required/>
                             </div> 
                             <div class="field-box">
                                 <label>开户账号*</label>
-                                <input class="span8 inline-input" type="text" id="account" value="{$partyb.account}" name="account" required/>
+                                <input class="span8 inline-input" type="text" id="account" value="{$constract.account}" name="account" required/>
                             </div>  
                             <div class="field-box">
                                 <label>联系信息</label>
@@ -48,7 +48,7 @@
                                       <label>联系人*</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" name="contact" value="{$partyb.contact}" required/>
+                                      <input class="inline-input" type="text" name="contact" value="{$constract.aname}" required/>
                                     </td>
                                    
                                   </tr>
@@ -57,7 +57,7 @@
                                       <label>电话</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" id="tel" name="tel" value="{$partyb.tel}"  placeholder="xxx-xxxxxxxx或者xxxx-xxxxxxx"/>
+                                      <input class="inline-input" type="text" id="tel" name="tel" value="{$constract.tel}"  placeholder="xxx-xxxxxxxx或者xxxx-xxxxxxx"/>
                                     </td>
                                   </tr>
                                   <tr>
@@ -65,7 +65,7 @@
                                       <label>手机*</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" id="phone" name="phone" value="{$partyb.phone}" required/>
+                                      <input class="inline-input" type="text" id="phone" name="phone" value="{$constract.phone}" required/>
                                     </td>
                                   </tr>
                                   <tr>
@@ -73,7 +73,7 @@
                                     <label>Email</label>
                                     </td>
                                     <td>
-                                    <input class="inline-input" type="text" id="email" name="email" value="{$partyb.email}"/>
+                                    <input class="inline-input" type="text" id="email" name="email" value="{$constract.email}"/>
 
                                     </td>
                                   </tr>
@@ -82,7 +82,7 @@
                                       <label>地址</label>
                                     </td>
                                     <td>
-                                     <input class="inline-input" type="text" name="address" value="{$partyb.address}"/>
+                                     <input class="inline-input" type="text" name="address" value="{$constract.address}"/>
                                     </td>
                                   </tr>
                                   <tr>
@@ -90,15 +90,15 @@
                                       <label>邮编</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" id="code" name="code" value="{$partyb.code}"/>
-                                      <input  type="hidden"  name="id" value="{$partyb.id}"/>
+                                      <input class="inline-input" type="text" id="code" name="code" value="{$constract.code}"/>
+                                      <input  type="hidden"  name="id" value="{$constract.id}"/>
                                     </td>
                                   </tr>
                                 </table>
                             </div>                            
                             <div class="field-box">
                                 <label>备注</label>
-                                <textarea class="span8" rows="4" name="remark" >{$partyb.remark}</textarea>
+                                <textarea class="span8" rows="4" name="remark" >{$constract.remark}</textarea>
                             </div>
                             <div class="field-box">
                               <center>
@@ -234,7 +234,6 @@
             return false;
        });
     }();
-   
     </script>
      
     <script src="__PUBLIC__/js/wysihtml5-0.3.0.js"></script>

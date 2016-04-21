@@ -7,9 +7,7 @@
     <link href="__PUBLIC__/css/lib/select2.css" type="text/css" rel="stylesheet" />
     <link href="__PUBLIC__/css/lib/bootstrap.datepicker.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="__PUBLIC__/css/compiled/form-showcase.css" type="text/css" media="screen" />
-   <link rel="stylesheet" href="__PUBLIC__/css/compiled/ui-elements.css" type="text/css" media="screen" />
-
-
+    <link rel="stylesheet" href="__PUBLIC__/css/compiled/ui-elements.css" type="text/css" media="screen" />
 
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/validation/layer/skin/layer.css" />
 
@@ -20,25 +18,25 @@
                 <div class="row-fluid form-wrapper">
                     <!-- left column -->
                     <div class="span8 column">
-                        <div class="span8 column">
-                            <div class="alert alert-info">
-                            <i class="icon-lightbulb"></i>
-                            请修改乙方信息：）
-                            <br><h3>乙方信息资料：</h3>
-                        </div>
-                         <form action="__ACTION__" method="post">
+                        <div class="alert alert-info">
+                        <i class="icon-lightbulb"></i>
+                        请添加供应商：）
+                        <br><h3>供应商信息资料：</h3>
+                    </div>
+                    <h6 class="personal-title"></h6>
+                        <form action="__ACTION__" method="post">
                             
                             <div class="field-box">
-                                <label>乙方名称*</label>
-                                <input class="span8 inline-input" type="text" name="bname"  value="{$partyb.bname}" required/>
+                                <label>供应商名称*</label>
+                                <input class="span8 inline-input" type="text" name="pname" required/>
                             </div> 
                             <div class="field-box">
                                 <label>开户银行*</label>
-                                <input class="span8 inline-input" type="text" name="bank" value="{$partyb.bank}" required/>
+                                <input class="span8 inline-input" type="text" name="bank" required/>
                             </div> 
                             <div class="field-box">
                                 <label>开户账号*</label>
-                                <input class="span8 inline-input" type="text" id="account" value="{$partyb.account}" name="account" required/>
+                                <input class="span8 inline-input" type="text" id="account" name="account" required/>
                             </div>  
                             <div class="field-box">
                                 <label>联系信息</label>
@@ -48,7 +46,7 @@
                                       <label>联系人*</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" name="contact" value="{$partyb.contact}" required/>
+                                      <input class="inline-input" type="text" name="contact" required/>
                                     </td>
                                    
                                   </tr>
@@ -57,7 +55,7 @@
                                       <label>电话</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" id="tel" name="tel" value="{$partyb.tel}"  placeholder="xxx-xxxxxxxx或者xxxx-xxxxxxx"/>
+                                      <input class="inline-input" type="text" id="tel" name="tel"  placeholder="xxx-xxxxxxxx或者xxxx-xxxxxxx"/>
                                     </td>
                                   </tr>
                                   <tr>
@@ -65,7 +63,7 @@
                                       <label>手机*</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" id="phone" name="phone" value="{$partyb.phone}" required/>
+                                      <input class="inline-input" type="text" id="phone" name="phone" required/>
                                     </td>
                                   </tr>
                                   <tr>
@@ -73,7 +71,7 @@
                                     <label>Email</label>
                                     </td>
                                     <td>
-                                    <input class="inline-input" type="text" id="email" name="email" value="{$partyb.email}"/>
+                                    <input class="inline-input" type="text" id="email" name="email"/>
 
                                     </td>
                                   </tr>
@@ -82,7 +80,7 @@
                                       <label>地址</label>
                                     </td>
                                     <td>
-                                     <input class="inline-input" type="text" name="address" value="{$partyb.address}"/>
+                                     <input class="inline-input" type="text" name="address"/>
                                     </td>
                                   </tr>
                                   <tr>
@@ -90,22 +88,21 @@
                                       <label>邮编</label>
                                     </td>
                                     <td>
-                                      <input class="inline-input" type="text" id="code" name="code" value="{$partyb.code}"/>
-                                      <input  type="hidden"  name="id" value="{$partyb.id}"/>
+                                      <input class="inline-input" type="text" id="code" name="code"/>
                                     </td>
                                   </tr>
                                 </table>
                             </div>                            
                             <div class="field-box">
                                 <label>备注</label>
-                                <textarea class="span8" rows="4" name="remark" >{$partyb.remark}</textarea>
+                                <textarea class="span8" rows="4" name="remark" ></textarea>
                             </div>
                             <div class="field-box">
                               <center>
                                 <table>
                                   <tr>
                                     <td>
-                                      <button type="submit" class="btn-flat default">修改</button>
+                                      <button type="submit" class="btn-flat default">添加</button>
                                     </td>
                                     <td>
                                       <button type="reset" class="btn-flat danger">重置</button>
@@ -127,7 +124,7 @@
 
       
     
-      //外部插件功能js
+    //外部插件功能js
       ;!function(){
 
        var CACCOUNT=false;
@@ -234,7 +231,7 @@
             return false;
        });
     }();
-   
+
     </script>
      
     <script src="__PUBLIC__/js/wysihtml5-0.3.0.js"></script>
@@ -245,6 +242,7 @@
     <script src="__PUBLIC__/js/jquery.uniform.min.js"></script>
     <script src="__PUBLIC__/js/select2.min.js"></script>
     <script src="__PUBLIC__/js/theme.js"></script>
+ 
    
 
 </block>

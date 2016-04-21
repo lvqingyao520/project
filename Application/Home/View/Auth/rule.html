@@ -1,151 +1,124 @@
 <extend name="Public/index"/>
 <block name='maincontent'>
-	<!-- this page specific styles -->
-    <link rel="stylesheet" href="__PUBLIC__/css/compiled/tables.css" type="text/css" media="screen" />  
+  <!-- this page specific styles -->
+    <link rel="stylesheet" href="__PUBLIC__/css/compiled/tables.css" type="text/css" media="screen" /> 
+    <link rel="stylesheet" href="__PUBLIC__/css/compiled/index.css" type="text/css" media="screen" />     
     <script type="text/javascript" src="__PUBLIC__/validation/layer/jquery-1.11.3.min.js"></script> 
 
 
-	<div id="pad-wrapper">
+  <div id="pad-wrapper" style="margin-top:20px;">
                 
                 <!-- products table-->
                 <!-- the script for the toggle all checkboxes from header is located in js/theme.js -->
-                <div class="table-wrapper products-table section">
+                <div class="table-products section" style="margin:0px;padding:0px;border:0px;">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4><b>甲方设置</b></h4>
+                            <h4>权限管理 <small></small></h4>
                         </div>
                     </div>
 
                     <div class="row-fluid filter-block">
-                        <div class="pull-left">
-                          <a class="btn-flat success new-product" href="{:U('Home/BsPart/addpartya')}">添加</a>
-                        </div>
-                      
-                        <div class="pull-right">
-
-                          
-                          <form action="__ACTION__" method="get" class="form-search">
-
-                            <!-- <div class="ui-select" style="width:40px;">
-                                <select name="status" >
-                                  <option value=""/>全部
-                                  <option value="1" {$_GET['status']=='1'?"selected":""} />普通
-                                  <option value="2" {$_GET['status']=='2'?"selected":""} />禁用
-                                </select>
-                            </div> -->
-                          	<div class="btn-group">
+                    <div class="pull-right">
+                    <form action="__ACTION__" method="get" class="form-search">
+                        
+                        
+                            <div class="btn-group">
                                 <button class="btn glow"  data-toggle="dropdown">状态</button>
                                 <button class="btn glow dropdown-toggle" data-toggle="dropdown">
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     <li class=<if condition="($_GET['status'] neq 1) and ($_GET['status'] neq 2) ">"active"   <else /> ""</if>><a href="__ACTION__/status/0/keyword/{$_GET['keyword']}">全部</a></li>
-                                    <li class={$_GET['status']=='1'?"active":""}><a href="__ACTION__/status/1/keyword/{$_GET['keyword']}">普通</a></li>
-                                    <li class={$_GET['status']=='2'?"active":""}><a href="__ACTION__/status/2/keyword/{$_GET['keyword']}">禁用</a></li>
+                                    <li class={$_GET['status']=='1'?"active":""}><a href="__ACTION__/status/1/keyword/{$_GET['keyword']}">封存</a></li>
+                                    <li class={$_GET['status']=='2'?"active":""}><a href="__ACTION__/status/2/keyword/{$_GET['keyword']}">普通</a></li>
                                 </ul>
                             </div>
                             <div class="input-append" >
-            						        <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
+                                <input type="text" name="keyword" value="{$_GET['keyword']}"  placeholder="输入关键字" class="search-query" style="width:65px;">
                                 <input type="hidden" name="status" value="{$_GET['status']}" >
-            						        <button type="submit" class="btn">搜</button>
-            						        
-            						    </div>
-                          </form>
-
-                            
-                        </div>
+                                <button type="submit" class="btn">搜</button>
+                                
+                            </div>
+                    </form>
                     </div>
-
+                    </div>
                     <div class="row-fluid table-responsive">
                         <table class="table table-hover">
+                        
                             <thead>
                                 <tr>
-                                    <th >
-                                        
-                                        序号
+                                    
+                                    <th>
+                                        <span class="line"></span>序号
                                     </th>
                                     <th>
-                                        <span class="line"></span>名称
+                                        <span class="line"></span>账号
                                     </th>
                                     <th>
-                                        <span class="line"></span>联系人
+                                        <span class="line"></span>姓名
                                     </th>
                                     <th>
-                                        <span class="line"></span>电话
+                                        <span class="line"></span>职位
                                     </th>
                                     <th>
-                                        <span class="line"></span>开户银行
+                                        <span class="line"></span>部门
                                     </th>
                                     <th>
-                                        <span class="line"></span>开户账号
+                                        <span class="line"></span>角色
                                     </th>
                                     <th>
                                         <span class="line"></span>状态
                                     </th>
                                     <th>
-                                        <span class="line"></span>操作
+                                        <span class="line"></span>分配
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <!-- row -->
-                                <foreach name="partya" item="pa">
-                                <tr>
+                                <foreach name='rule' item='ru'>
+                                <tr >
                                     <td>
-                                        {$pa.id}
+                                       {$ru.id}
+                                    </td>
+                                    <td class="description">
+                                        {$ru.username}
+                                    </td>
+                                    <td class="description">
+                                        {$ru.truename}
+                                    </td>
+                                    <td class="description">
+                                        {$ru.jobname}
+                                    </td>
+                                    <td class="description">
+                                        {$ru.departname}
+                                    </td>
+                                    <td class="description">
+                                        {$ru.rolename}
+                                    </td>
+                                    <td class="description">
+                                        <?php echo $arr[$ru[status]]; ?>
                                     </td>
                                     <td>
-                                        {$pa.aname}
-                                    </td>
-                                    <td>
-                                        {$pa.contact}
-                                    </td>
-                                    <td>
-                                        {$pa.tel}
-                                    </td>
-                                    <td>
-                                        {$pa.bank}
-                                    </td>
-                                    <td>
-                                        {$pa.account}
-                                    </td>
-                                    <td>
-                                        
-                                        <div  class="slider-frame <if condition='$pa.status eq 1 '>info<else /></if>">
-                                          <span sid="{$pa.id}" data-on-text="普通" data-off-text="禁用" class="slider-button <if condition='$pa.status eq 1 '>on<else /></if>"><?php echo $arr[$pa['status']]; ?></span>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      
-                                      
-                                        
-                                       <!-- 
-                                        <ul class="actions">
-                                            <a href="{:U('Home/BsPart/updatepartya/id/'.$pa[id])}"><li><i class="table-edit"></i></li></a>
-                                            
-                                             <a href="{:U('Home/BsPart/delpartya/id/'.$pa[id])}"><li class="last"><i class="table-delete"></i></li></a>
-                                        </ul> -->
-                                      <div class="btn-toolbar">
+                                       <div class="btn-toolbar">
                                         <div class="btn-group">
-                                          <a  class="btn" href="{:U('Home/BsPart/updatepartya/id/'.$pa[id])} "  style="text-decoration: none;"><i class="icon-pencil"></i></a>
+                                          <a  class="btn" href="{:U('Home/Auth/addroles/id/'.$ru[id])} "  style="text-decoration: none;">添加角色</a>
                                           
-                                          <a class="btn" href="{:U('Home/BsPart/delpartya/id/'.$pa[id])}" style="text-decoration: none;"><i class="icon-remove"></i></a>
+                                          <a class="btn" href="{:U('Home/Auth/addrules/id/'.$ru[id])}" style="text-decoration: none;">添加权限</a>
                                         </div>
                                       </div>
-
                                     </td>
-                                   
                                 </tr>
                                 </foreach>
                                 <!-- row -->
-                              
+                               
                             </tbody>
-                        </table>
-                   
                            
-                      
-                       
-                        <div id="page" class="pagination pull-right">
+                        </table>
+                    </div>
+                    
+                    
+                    <div id="page" class="pagination pull-right">
                           {$page}
                         </div>
 
@@ -209,55 +182,18 @@
 
 
                         </script>
-
-                    </div>
+                    
                 </div>
                 <!-- end products table -->
 
                
     </div>
     
-     <script src="__PUBLIC__/js/wysihtml5-0.3.0.js"></script>
+    <script src="__PUBLIC__/js/wysihtml5-0.3.0.js"></script>
     <script src="__PUBLIC__/js/jquery-latest.js"></script>
     
     <script src="__PUBLIC__/js/bootstrap.min.js"></script>
     <script src="__PUBLIC__/js/theme.js"></script>
-     <script type="text/javascript">
-        $(function () {
-          // Switch slide buttons
-            $('.slider-button').click(function() {
-                if ($(this).hasClass("on")) {
-                    $(this).removeClass('on').html($(this).data("off-text"));
-                    $(this).parent(".slider-frame").removeClass('info');
-                    var sid=$(this).attr('sid');
-                    $.ajax({ 
-                        url: "{:U('Home/BsPart/status')}",
-                        type:'POST',
-                        dataType:'json',
-                        data:{'status':2,'id':sid},
-                        success: function(data){
-
-                        },
-                    
-                    });    
-                } else {
-                    $(this).addClass('on').html($(this).data("on-text"));
-                    $(this).parent(".slider-frame").addClass('info');
-                    var sid=$(this).attr('sid');
-                    $.ajax({ 
-                        url: "{:U('Home/BsPart/status')}",
-                        type:'POST',
-                        dataType:'json',
-                        data:{'status':1,'id':sid},
-                        success: function(data){
-                           
-                        },
-                    
-                    });
-                }
-            });
-
-        });
-    </script>
+  
      
 </block>

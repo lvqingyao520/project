@@ -12,13 +12,13 @@
                 <div class="table-wrapper products-table section">
                     <div class="row-fluid head">
                         <div class="span12">
-                            <h4><b>甲方设置</b></h4>
+                            <h4><b>供应商设置</b></h4>
                         </div>
                     </div>
 
                     <div class="row-fluid filter-block">
                         <div class="pull-left">
-                          <a class="btn-flat success new-product" href="{:U('Home/BsPart/addpartya')}">添加</a>
+                          <a class="btn-flat success new-product" href="{:U('Home/BsPart/addprovider')}">+ 添加供应商</a>
                         </div>
                       
                         <div class="pull-right">
@@ -45,11 +45,11 @@
                                 </ul>
                             </div>
                             <div class="input-append" >
-            						        <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
-                                <input type="hidden" name="status" value="{$_GET['status']}" >
-            						        <button type="submit" class="btn">搜</button>
-            						        
-            						    </div>
+          						        <input type="text" name="keyword" value="{$_GET['keyword']}" class="search-query" style="width:60px;">
+                              <input type="hidden" name="status" value="{$_GET['status']}" >
+          						        <button type="submit" class="btn">搜</button>
+          						        
+          						    </div>
                           </form>
 
                             
@@ -89,13 +89,13 @@
                             </thead>
                             <tbody>
                                 <!-- row -->
-                                <foreach name="partya" item="pa">
+                                <foreach name="provider" item="pa">
                                 <tr>
                                     <td>
                                         {$pa.id}
                                     </td>
                                     <td>
-                                        {$pa.aname}
+                                        {$pa.pname}
                                     </td>
                                     <td>
                                         {$pa.contact}
@@ -116,25 +116,19 @@
                                       </div>
                                     </td>
                                     <td>
-                                      
-                                      
                                         
-                                       <!-- 
-                                        <ul class="actions">
-                                            <a href="{:U('Home/BsPart/updatepartya/id/'.$pa[id])}"><li><i class="table-edit"></i></li></a>
-                                            
-                                             <a href="{:U('Home/BsPart/delpartya/id/'.$pa[id])}"><li class="last"><i class="table-delete"></i></li></a>
-                                        </ul> -->
-                                      <div class="btn-toolbar">
+                                       <div class="btn-toolbar">
                                         <div class="btn-group">
-                                          <a  class="btn" href="{:U('Home/BsPart/updatepartya/id/'.$pa[id])} "  style="text-decoration: none;"><i class="icon-pencil"></i></a>
+                                          <a  class="btn" href="{:U('Home/BsPart/updateprovider/id/'.$pa[id])} "  style="text-decoration: none;"><i class="icon-pencil"></i></a>
                                           
-                                          <a class="btn" href="{:U('Home/BsPart/delpartya/id/'.$pa[id])}" style="text-decoration: none;"><i class="icon-remove"></i></a>
+                                          <a class="btn" href="{:U('Home/BsPart/delprovider/id/'.$pa[id])}" style="text-decoration: none;"><i class="icon-remove"></i></a>
                                         </div>
                                       </div>
+                                       
+                                        
+                                      
 
                                     </td>
-                                   
                                 </tr>
                                 </foreach>
                                 <!-- row -->
@@ -231,7 +225,7 @@
                     $(this).parent(".slider-frame").removeClass('info');
                     var sid=$(this).attr('sid');
                     $.ajax({ 
-                        url: "{:U('Home/BsPart/status')}",
+                        url: "{:U('Home/BsPart/statusp')}",
                         type:'POST',
                         dataType:'json',
                         data:{'status':2,'id':sid},
@@ -245,7 +239,7 @@
                     $(this).parent(".slider-frame").addClass('info');
                     var sid=$(this).attr('sid');
                     $.ajax({ 
-                        url: "{:U('Home/BsPart/status')}",
+                        url: "{:U('Home/BsPart/statusp')}",
                         type:'POST',
                         dataType:'json',
                         data:{'status':1,'id':sid},
