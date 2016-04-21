@@ -77,7 +77,7 @@
 		                   		<volist name='downloads' id="dl" >	                   			
 			                   		<tr>
 				                   		<th style='width:25%;'>
-				                   			<a href="javascript:void(0);">{$dl.file_name}</a>
+				                   			<a href="__PUBLIC__/{$dl.file_url}" target='_blank'>{$dl.file_name}</a>
 				                   		</th>
 				                   		<td>
 				                   			<a class="btn-flat primary" href="{:U('Home/Filepass/downLoad?fid='.$dl['id'])}" style="text-decoration:none;">下载</a>

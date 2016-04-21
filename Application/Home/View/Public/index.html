@@ -324,20 +324,20 @@
                     <span>基本设置</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu" <if condition="($Think.const.CONTROLLER_NAME eq 'BsPart') OR ($Think.const.CONTROLLER_NAME eq 'Bscomp') " >style="display:block;" <else />style="display:none;" </if> >
-                    <li><a href="#">部门管理</a></li>
-                    <li><a href="#">职位管理</a></li>
-                    <li><a href="#">职员管理</a></li>
-                    <li><a href="#">流程设置</a></li>
+                <ul class="submenu" <if condition="($Think.const.CONTROLLER_NAME eq 'BsPart') OR ($Think.const.CONTROLLER_NAME eq 'BsComp') OR ($Think.const.CONTROLLER_NAME eq 'BsProcess') " >style="display:block;" <else />style="display:none;" </if> >
+                    <li><a href="{:U('Home/BsComp/depart')}">部门管理</a></li>
+                    <li><a href="{:U('Home/BsComp/job')}">职位管理</a></li>
+                    <li><a href="{:U('Home/BsComp/employee')}">职员管理</a></li>
+                    <li><a href="{:U('Home/BsProcess/process')}">流程设置</a></li>
                     <li><a href="{:U('Home/BsPart/partya')}">甲方设置</a></li>
-                    <li><a href="{:U('Home/BsPart/partya')}">乙方设置</a></li>
-                    <li><a href="#">账户设置</a></li>
-                    <li><a href="#">供应商设置</a></li>
-                    <li><a href="#">施工队设置</a></li>
+                    <li><a href="{:U('Home/BsPart/partyb')}">乙方设置</a></li>
+                    <li><a href="{:U('Home/BsPart/account')}">账户设置</a></li>
+                    <li><a href="{:U('Home/BsPart/provider')}">供应商设置</a></li>
+                    <li><a href="{:U('Home/BsPart/constract')}">施工队设置</a></li>
                 </ul>
             </li> 
 
-            <li <if condition="($Think.const.CONTROLLER_NAME eq '')" > class="active">
+            <li <if condition="($Think.const.CONTROLLER_NAME eq 'Auth')" > class="active">
                 <!-- active 选中项 -->
                 <!-- 开口 -->
                 <div class="pointer">
@@ -349,12 +349,12 @@
                     <span>权限设置</span>
                     <i class="icon-chevron-down"></i>
                 </a>
-                <ul class="submenu">
+                <ul class="submenu" <if condition="($Think.const.CONTROLLER_NAME eq 'Auth') " >style="display:block;" <else />style="display:none;" </if> >
                     <li><a href="#">材料特殊权限</a></li>
                     <li><a href="#">账户余额特殊权限</a></li>
                     <li><a href="#">涂布率警报权限</a></li>
-                    <li><a href="#">角色管理</a></li>
-                    <li><a href="#">权限管理</a></li>
+                    <li><a href="{:U('Home/Auth/role')}">角色管理</a></li>
+                    <li><a href="{:U('Home/Auth/rule')}">权限管理</a></li>
                 </ul>
             </li> 
 

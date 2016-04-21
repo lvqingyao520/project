@@ -486,7 +486,7 @@ class FilepassController extends BaseController{
 				$atta_ids = explode(',',$list['attachment_ids']);
 				$downloads = null;
 				foreach ($atta_ids as $fid) {
-					$downloads[] = $tb_sub_file -> field('file_name,id')
+					$downloads[] = $tb_sub_file -> field('file_name,id,file_url')
 												-> where(array('id'=>$fid))
 												-> find();
 				}	
